@@ -1,16 +1,5 @@
-# This is a sample Python script.
+from transformers import pipeline, set_seed
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+generator = pipeline('text-generation', model='gpt2')
+set_seed(42)
+res = generator("Hello, I'm a language model,", max_length=30, num_return_sequences=5)
