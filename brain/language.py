@@ -23,7 +23,7 @@ class LanguageProcessor:
             input_ids,
             do_sample=True,
             temperature=0.9,
-            max_length=35,
+            max_length=len(self.prompt) + 45,
         )
         gen_text = tokenizer.batch_decode(gen_tokens)
         gen_text = [text.replace(self.prompt + question, '') for text in gen_text]
