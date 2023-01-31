@@ -1,4 +1,4 @@
-from language import *
+from .language import *
 
 
 class Brain:
