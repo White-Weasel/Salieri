@@ -1,5 +1,6 @@
 import interface
 import uvicorn
+from pyngrok import ngrok
 app = interface.app
 if __name__ == '__main__':
     port = 5000
