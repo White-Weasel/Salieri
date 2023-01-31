@@ -1,6 +1,7 @@
 import interface
 import uvicorn
 import os
+import nest_asyncio
 from pyngrok import ngrok
 app = interface.app
 if __name__ == '__main__':
@@ -9,4 +10,5 @@ if __name__ == '__main__':
     ngrok.set_auth_token(os.getenv('ngrok_token'))
     public_url = ngrok.connect(port)
     print(public_url)
-    uvicorn.run("main:app", reload=True, port=port)
+    nest_asyncio.apply()
+    uvicorn.run(app, port=port)
