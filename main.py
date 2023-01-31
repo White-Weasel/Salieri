@@ -1,11 +1,12 @@
 import interface
 import uvicorn
+import os
 from pyngrok import ngrok
 app = interface.app
 if __name__ == '__main__':
     port = 3000
     # Open a ngrok tunnel to the HTTP server
-    ngrok.set_auth_token(r"2L5VkJxaX3C9C8bN3HjCe5K7YC5_71Sci5vUXcsyfY2ndJJTg")
+    ngrok.set_auth_token(os.getenv('ngrok_token'))
     public_url = ngrok.connect(port)
-    print(" * ngrok tunnel \"{}\" -> \"http://127.0.0.1:{}\"".format(public_url, port))
+    print(public_url)
     uvicorn.run("main:app", reload=True, port=port)
