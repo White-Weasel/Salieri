@@ -23,7 +23,10 @@ class LanguageProcessor:
             input_ids,
             do_sample=True,
             temperature=0.9,
-            max_length=100,
+            max_length=35,
         )
-        gen_text = tokenizer.batch_decode(gen_tokens)[0]
-        return gen_text
+        gen_text = tokenizer.batch_decode(gen_tokens)
+        gen_text = [text.replace(self.prompt + question, '') for text in gen_text]
+        gen_text = [text[:text.index('###')].strip() for text in gen_text]
+        answer = gen_text[0]
+        return answer

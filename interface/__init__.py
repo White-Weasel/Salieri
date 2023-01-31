@@ -18,6 +18,8 @@ async def root():
 @app.post("/conversation")
 async def root(request: Request):
     res = await request.json()
+    question = res['message']
+    answer = brain.language.conversation(question)
     return {
-        "message": brain.language.conversation(res['message']),
+        "message": answer,
     }
