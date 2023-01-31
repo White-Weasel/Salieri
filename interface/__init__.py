@@ -4,6 +4,7 @@ import brain
 app = FastAPI()
 brain = brain.Brain()
 
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
