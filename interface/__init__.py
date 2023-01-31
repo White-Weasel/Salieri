@@ -19,5 +19,5 @@ async def root():
 async def root(request: Request):
     res = await request.json()
     return {
-        "message": brain.language(res['message']),
+        "message": brain.language.conversation(res['message']),
     }
