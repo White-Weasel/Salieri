@@ -10,9 +10,8 @@ class LanguageProcessor:
             self.prompt = prompt
         else:
             self.prompt = (
-                "Human: Hello, who are you?\n"
-                "AI: I am an AI named Salieri. How can I help you today?\n"
-                "###\n"
+                "Human: Hello, who are you?###\n"
+                "AI: I am an AI named Salieri. How can I help you today?###\n"
                 "Human: "
             )
 
