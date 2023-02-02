@@ -16,7 +16,7 @@ class LanguageProcessor:
             )
 
     def conversation(self, question):
-        self.prompt += question
+        self.prompt += question + '###\n'
         input_ids = tokenizer(self.prompt, return_tensors="pt").input_ids
         gen_tokens = model.generate(
             input_ids,
