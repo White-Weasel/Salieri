@@ -27,6 +27,7 @@ class LanguageProcessor:
         gen_text = tokenizer.batch_decode(gen_tokens)
         print(gen_text)
         gen_text = [text.replace(self.prompt, '') for text in gen_text]
-        gen_text = [text[:text.index('###')].strip() for text in gen_text]
+        gen_text = [text[:text.index('###')] for text in gen_text]
         answer = gen_text[0]
+        self.prompt += answer + '###\nHuman: '
         return answer
