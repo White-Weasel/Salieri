@@ -1,6 +1,7 @@
+import torch
 from transformers import GPTNeoForCausalLM, GPT2Tokenizer
-
-model = GPTNeoForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B")
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+model = GPTNeoForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B").to(device)
 tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B")
 
 
@@ -17,7 +18,7 @@ class LanguageProcessor:
 
     def conversation(self, question):
         self.prompt += question + '###\n'
-        input_ids = tokenizer(self.prompt, return_tensors="pt").input_ids
+        input_ids = tokenizer(self.prompt, return_tensors="pt").to(device).input_ids
         gen_tokens = model.generate(
             input_ids,
             do_sample=True,
@@ -27,7 +28,7 @@ class LanguageProcessor:
         gen_text = tokenizer.batch_decode(gen_tokens)
         print(gen_text)
         gen_text = [text.replace(self.prompt, '') for text in gen_text]
-        gen_text = [text[:text.index('###')] for text in gen_text]
+        gen_text = [text[:text.index('###')] for text in gen_text if '###' in text]
         answer = gen_text[0]
         self.prompt += answer + '###\nHuman: '
         return answer
