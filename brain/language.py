@@ -1,8 +1,8 @@
 import torch
 from transformers import GPTNeoForCausalLM, GPT2Tokenizer
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
-model = GPTNeoForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B").to(device)
-tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B")
+model = GPTNeoForCausalLM.from_pretrained("EleutherAI/gpt-neo-2.7B").to(device)
+tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-neo-2.7B")
 
 
 class LanguageProcessor:
