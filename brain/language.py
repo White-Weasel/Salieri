@@ -11,13 +11,13 @@ class LanguageProcessor:
             self.prompt = prompt
         else:
             self.prompt = (
-                "###Human: Hello, who are you?\n"
-                "###AI: I am an AI named Salieri. How can I help you today?###\n"
+                "###Human: Hello, who are you?"
+                "###AI: I am an AI named Salieri. How can I help you today?###"
                 "###Human: "
             )
 
     def conversation(self, question):
-        self.prompt += question + '\n###AI: '
+        self.prompt += question + '###AI: '
         input_ids = tokenizer(self.prompt, return_tensors="pt").to(device).input_ids
         gen_tokens = model.generate(
             input_ids,
@@ -30,5 +30,5 @@ class LanguageProcessor:
         gen_text = [text.replace(self.prompt, '') for text in gen_text]
         gen_text = [text[:text.index('###')].strip() for text in gen_text if '###' in text]
         answer = gen_text[0]
-        self.prompt += answer + '\n###Human: '
+        self.prompt += answer + '###Human: '
         return answer
