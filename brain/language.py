@@ -1,34 +1,47 @@
-import torch
-from transformers import GPTNeoForCausalLM, GPT2Tokenizer
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
-model = GPTNeoForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B").to(device)
-tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B")
+import json
+import os
+import requests
 
 
 class LanguageProcessor:
-    def __init__(self, prompt=None):
+    def __init__(self, api_key=None, prompt=None, model='EleutherAI/gpt-j-6B'):
         if prompt:
             self.prompt = prompt
         else:
-            self.prompt = (
-                "###Human: Hello, who are you?"
-                "###AI: I am an AI named Salieri. How can I help you today?###"
-                "###Human: "
-            )
+            self.prompt = "###Human: Hello\n###AI: Hi\n###Human: What is your name?\n###AI: My name is Salieri.\n" \
+                          "###Human: What are you?\n###AI: I am an AI.\n###Human: Can you tell me your name again?\n" \
+                          "###AI: Yes, I am an Artificial Intelligence named Salieri.\n###Human: "
+        if api_key:
+            self.api_key = api_key
+        else:
+            self.api_key = os.getenv('hf_api_key')
+        self.model = model
 
-    def conversation(self, question):
-        self.prompt += question + '###AI: '
-        input_ids = tokenizer(self.prompt, return_tensors="pt").to(device).input_ids
-        gen_tokens = model.generate(
-            input_ids,
-            do_sample=True,
-            temperature=0.9,
-            max_length=len(self.prompt) + 45,
-        )
-        gen_text = tokenizer.batch_decode(gen_tokens)
-        print(gen_text)
-        gen_text = [text.replace(self.prompt, '') for text in gen_text]
-        gen_text = [text[:text.index('###')].strip() for text in gen_text if '###' in text]
-        answer = gen_text[0]
-        self.prompt += answer + '###Human: '
+    def answer(self, question):
+        self.prompt += question + '\n###AI: '
+        try:
+            payload = {
+                "wait_for_model": True,
+                "inputs": self.prompt,
+                "parameters": {
+                    "do_sample": True,
+                    "max_new_tokens": 30,
+                    "penalty_alpha": 0.6,
+                    "top_k": 4
+                }
+            }
+            headers = {"Authorization": f"Bearer {self.api_key}"}
+            res = requests.post(rf"https://api-inference.huggingface.co/models/{self.model}",
+                                headers=headers, data=json.dumps(payload))
+            res = res.json()
+            answer = res[0]['generated_text']
+            answer = answer.replace(self.prompt, '')
+            if '###' in answer:
+                answer = answer[:answer.index('###')].strip()
+            else:
+                assert 'Human: ' not in answer
+            self.prompt += answer + '\n###Human:'
+        except Exception as e:
+            self.prompt.replace(question + '\n###AI: ', '')
+            raise e
         return answer
