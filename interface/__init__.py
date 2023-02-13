@@ -10,16 +10,11 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/conversation")
-async def root():
-    return {"message": "Hello World"}
-
-
 @app.post("/conversation")
 async def root(request: Request):
     res = await request.json()
     question = res['message']
-    answer = brain.language.conversation(question)
+    answer = brain.language.answer(question)
     return {
         "message": answer,
     }
