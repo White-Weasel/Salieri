@@ -3,7 +3,7 @@ import os
 import requests
 
 
-class LanguageProcessor:
+class GptJ6B:
     def __init__(self, api_key=None, prompt=None, model='EleutherAI/gpt-j-6B'):
         if prompt:
             self.prompt = prompt
