@@ -1,7 +1,7 @@
-from .language import *
+from . import LanguageProcessor
 
 
 class Brain:
     def __init__(self):
-        self.language = language.LanguageProcessor()
+        self.languageProcessor = LanguageProcessor.GptJ6B()
         pass
