@@ -134,6 +134,40 @@ if __name__ == '__main__':
 
     onion_prompt = """Write a sarcastic news headline in The Onion style talking about the C programming language"""
 
-    response = openai.Completion.create(model="text-davinci-003", prompt=context_prompt, temperature=0.9, max_tokens=100)
+    truthful_prompt = """Answer the question as truthfully as possible, and if you don't know the answer, say "I don't know" in a sarcastic tone.
+    Q: Who is the last person on Earth?
+    A: 
+    """
+
+    classification_prompt = '''Summary this to be used as GPT-3 prompt:
+    Classify the following sentence based on the speaker intentions and emotion, then response with the correct intentions and emotions.
+    Q: That was your last warning!
+    Intentions: Threat.
+    Emotions: Firmness, Warning.
+    Response Intention: Statement.
+    Response emotions: Anger, determination.
+    A: You won't catch me alive!
+    
+    Q: What is the capital of Greek??
+    Intentions: Inquiry.
+    Emotions: Curiosity.
+    Response Intention: Statement.
+    Response Emotions: Confidence, knowledge.
+    A: Athens is the capital of Greece.
+    
+    Q: '''
+
+    response_prompt = '''Response with the emotion in bracket.
+    Q: That was your last warning!
+    A(Anger, determination): You won't catch me alive!.
+    
+    Q: Maybe careful next time.
+    A(Thankfulness or Acknowledgment): Thank you for the advice.
+    
+    Q: What is the capital of Greek??.
+    A(Sarcasm - Amused disbelief): '''
+
+    response = openai.Completion.create(model="text-davinci-003", prompt=classification_prompt,
+                                        temperature=0.9, max_tokens=100)
     print(response["choices"][0]["text"])
     pass
