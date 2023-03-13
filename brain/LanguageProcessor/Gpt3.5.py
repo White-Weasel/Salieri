@@ -2,7 +2,7 @@ import os
 import openai
 import tiktoken
 
-MODEL = 'gpt-3.5-turbo-0301'
+MODEL = 'gpt-3.5-turbo'
 
 
 def num_tokens_from_messages(messages, model=MODEL):
@@ -11,7 +11,7 @@ def num_tokens_from_messages(messages, model=MODEL):
         encoding = tiktoken.encoding_for_model(model)
     except KeyError:
         encoding = tiktoken.get_encoding("cl100k_base")
-    if model == "gpt-3.5-turbo-0301":  # note: future models may deviate from this
+    try:  # note: future models may deviate from this
         num_tokens = 0
         for m in messages:
             num_tokens += 4  # every message follows <im_start>{role/name}\n{content}<im_end>\n
@@ -21,7 +21,7 @@ def num_tokens_from_messages(messages, model=MODEL):
                     num_tokens += -1  # role is always required and always 1 token
         num_tokens += 2  # every reply is primed with <im_start>assistant
         return num_tokens
-    else:
+    except Exception as e:
         raise NotImplementedError(f"""num_tokens_from_messages() is not presently implemented for model {model}.
   See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens.""")
 
@@ -40,6 +40,7 @@ if __name__ == '__main__':
         message = input('> ')
         if num_tokens_from_messages(conversation) >= 4000:
             # TODO: compress previous messages
+            # TODO: aware about table and formatting
             conversation = [{"role": "system", "content": initial_prompt}]
         conversation.append({"role": "user", "content": message})
         response = openai.ChatCompletion.create(
