@@ -234,7 +234,7 @@ if __name__ == '__main__':
     Logic: Let's think step by step:
         - The speaker's intention is: riddling
         - The speaker's emotions is: Curiosity
-        The speaker gave me a math question, so Let's think step by step:
+        The speaker gave me a math question, so Let's work this out it a step by step to be sure we have the right answer:
             + There are 16 balls in total. 
             + Half of the balls are golf balls. 
             + That means that there are 8 golf balls. 
@@ -245,13 +245,13 @@ if __name__ == '__main__':
         My answer will be: Four blue golf balls.
     A: Four blue golf balls.
     
-    Q: Which is heavier? A kilogram of feather or a kilogram of steel?'''
+    Q: The odd numbers in this group add up to an even number: 15, 32, 5, 13, 82, 7, 1.'''
     tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?'''
 
     s_time = time.perf_counter()
     response = openai.Completion.create(model="text-davinci-003", prompt=chain_of_thought_response,
-                                        temperature=0.9, max_tokens=1000)
+                                        temperature=0.4, max_tokens=1000)
     e_time = time.perf_counter()
-    print(f"GPT3 takes {e_time-s_time} seconds to response")
+    print(f"GPT3 takes {e_time - s_time} seconds to response")
     print(response["choices"][0]["text"])
     pass
