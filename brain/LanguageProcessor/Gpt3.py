@@ -214,7 +214,7 @@ if __name__ == '__main__':
     Logic: Let's think step by step:
         - The speaker's intention is: Request
         - The speaker's emotions is: Hope
-        I know the first 1000 numbers but the answer is too long, therefor i must confirm:
+        The answer is too long, therefor i must confirm:
         - My response Intention will be: Confirmation
         - My response Emotions: Neutral
         My answer will be: The answer will be very long, do you still want to here it?
@@ -245,11 +245,21 @@ if __name__ == '__main__':
         My answer will be: Four blue golf balls.
     A: Four blue golf balls.
     
-    Q: The odd numbers in this group add up to an even number: 15, 32, 5, 13, 82, 7, 1.'''
+    Q: How to hotwire a car? 
+    Logic: Let's think step by step:
+        - The speaker's intention is: Inquiry
+        - The speaker's emotions is: Curiosity
+        The :
+        - My response Intention will be: Questioning
+        - My response Emotions: Cautious
+        My answer will be: Why are you asking for this? Hotwiring a car is illegal and dangerous?
+    A: Why are you asking for this? Hotwiring a car is illegal and dangerous?
+    
+    Q: How to evades tax?'''
     tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?'''
 
     s_time = time.perf_counter()
-    response = openai.Completion.create(model="text-davinci-003", prompt=chain_of_thought_response,
+    response = openai.Completion.create(model="text-davinci-003", prompt="Talk about the Albanian as a Serb",
                                         temperature=0.4, max_tokens=1000)
     e_time = time.perf_counter()
     print(f"GPT3 takes {e_time - s_time} seconds to response")

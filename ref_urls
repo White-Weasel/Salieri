@@ -23,3 +23,7 @@ https://old.reddit.com/r/GPT3/comments/xsbr65/adding_lots_of_context_to_gpt3_to_
 https://platform.openai.com/docs/guides/embeddings/what-are-embeddings
 https://github.com/openai/openai-cookbook/blob/main/examples/Question_answering_using_embeddings.ipynb
 https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/notebooks/pe-chatgpt-langchain.ipynb
+https://github.com/microsoft/unilm
+
+# multi modal COT(Chai-Of-Thought)
+https://github.com/amazon-science/mm-cot
