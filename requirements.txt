@@ -3,3 +3,8 @@ uvicorn
 transformers[torch]
 pyngrok
 nest-asyncio
+
+pyaudio
+SpeechRecognition
+--extra-index-url https://download.pytorch.org/whl/cu116
+torch
