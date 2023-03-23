@@ -5,6 +5,7 @@ import speech_recognition as sr
 import torch
 import whisper
 from queue import Queue
+from sys import platform
 
 # TODO: Somehow we go 2.5-3 seconds delay, it might just be this pc but further testing is needed.
 
@@ -17,11 +18,27 @@ PHRASE_LENGTH_LIMIT = None
 PHRASE_TIMEOUT = 1.5
 # Energy level for mic to detect
 ENERGY_THRESHOLD = 300
-# input device name
+# input device name, only works on Linux
 INPUT_DEVICE = 'pulse'
 # -----------------------------------
 
-MODEL = 'tiny.en'
+MODEL = 'base.en'
+
+
+def get_microphone():
+    if 'linux' in platform:
+        mic_name = INPUT_DEVICE
+        if not mic_name or mic_name == 'list':
+            print("Available microphone devices are: ")
+            for index, name in enumerate(sr.Microphone.list_microphone_names()):
+                print(f"Microphone with name \"{name}\" found")
+            return
+        else:
+            for index, name in enumerate(sr.Microphone.list_microphone_names()):
+                if mic_name in name:
+                    return sr.Microphone(sample_rate=16000, device_index=index)
+    else:
+        return sr.Microphone(sample_rate=16000)
 
 
 def main():
@@ -31,8 +48,7 @@ def main():
     device_index = sr.Microphone.list_microphone_names().index(INPUT_DEVICE)
 
     recorder = sr.Recognizer()
-    source = sr.Microphone(sample_rate=16000, device_index=device_index)
-    with source:
+    with get_microphone() as source:
         recorder.adjust_for_ambient_noise(source)
     # recorder.dynamic_energy_threshold = True
     recorder.dynamic_energy_threshold = False
