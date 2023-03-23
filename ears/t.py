@@ -1,11 +1,12 @@
-import io
+import os
 import time
-from tempfile import NamedTemporaryFile
 import numpy as np
 import speech_recognition as sr
 import torch
 import whisper
 from queue import Queue
+
+# TODO: Somehow we go 2.5-3 seconds delay, it might just be this pc but further testing is needed.
 
 # ---- speech_recognition params ----
 # How real time the recording is in seconds. The default from example is 2, maybe a bigger value like 12-20 is better?
@@ -13,7 +14,7 @@ from queue import Queue
 # PHRASE_LENGTH_LIMIT = None
 PHRASE_LENGTH_LIMIT = None
 # How much empty space between recordings before we consider it a new line in the transcription (seconds)
-PHRASE_TIMEOUT = 2
+PHRASE_TIMEOUT = 1.5
 # Energy level for mic to detect
 ENERGY_THRESHOLD = 300
 # input device name
@@ -37,6 +38,7 @@ def main():
     recorder.dynamic_energy_threshold = False
     recorder.energy_threshold = ENERGY_THRESHOLD
     recorder.pause_threshold = PHRASE_TIMEOUT
+    conversation = []
 
     def record_callback(_, audio: sr.AudioData) -> None:
         """
@@ -55,9 +57,13 @@ def main():
             phrase_audio = np.frombuffer(phrase_audio.frame_data, np.int16).flatten().astype(np.float32) / 32768.0
             result = audio_model.transcribe(phrase_audio, fp16=torch.cuda.is_available())
             e_time = time.perf_counter()
-            print(f"real-time diff: {e_time - phrase_end_time_stamp}")
             text = result['text'].strip()
-            print(text)
+            conversation.append(text)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            for line in conversation:
+                print(line)
+            # Flush stdout.
+            print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
 
 
 if __name__ == '__main__':
