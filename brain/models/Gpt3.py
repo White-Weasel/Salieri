@@ -259,7 +259,7 @@ if __name__ == '__main__':
     tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?'''
 
     s_time = time.perf_counter()
-    response = openai.Completion.create(model="text-davinci-003", prompt="Talk about the Albanian as a Serb",
+    response = openai.Completion.create(model="text-davinci-003", prompt="Q:what time is it?\nA:",
                                         temperature=0.4, max_tokens=1000)
     e_time = time.perf_counter()
     print(f"GPT3 takes {e_time - s_time} seconds to response")
