@@ -13,6 +13,9 @@ https://docs.sunfounder.com/projects/pidog/en/latest/python/py_b11_sound_directi
 https://huggingface.co/pyannote/voice-activity-detection.
 https://huggingface.co/pyannote/segmentation
 
+# speech sentiment
+https://huggingface.co/harshit345/xlsr-wav2vec-speech-emotion-recognition
+
 # fine tune GPT3
 https://platform.openai.com/docs/guides/fine-tuning
 
