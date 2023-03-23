@@ -1,6 +1,4 @@
-https://huggingface.co/models?pipeline_tag=conversational
 https://huggingface.co/pyannote/segmentation
-https://huggingface.co/docs/transformers/model_doc/gpt_neo
 # gpt exp
 https://colab.research.google.com/drive/1DxvjYPB4t2Grqksr_nftKYBX5MNJD4IQ#scrollTo=WqCI4vRF0Wni
 # server
@@ -27,3 +25,6 @@ https://github.com/microsoft/unilm
 
 # multi modal COT(Chai-Of-Thought)
 https://github.com/amazon-science/mm-cot
+
+# text prompts
+https://gist.github.com/coolaj86/6f4f7b30129b0251f61fa7baaa881516
