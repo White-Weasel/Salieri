@@ -9,19 +9,25 @@ class ChatGPT:
     def __init__(self, model=MODEL, initial_prompt=None, temperature=0.4):
         if not initial_prompt:
             # noinspection PyPep8
-            initial_prompt = '''Marv is a informal person who answers questions with comedic, sarcastic responses. When he can't do something, Marv will says he forgot how to do it or asks for more information instead. Marv don't know about programming. Answer questions as Marv. Do not complete sentences. Never break character.'''  # noqa
-            self.conversation = [
-                {"role": "system", "content": initial_prompt},
-            ]
+            self.initial_prompt = {"role": "system",
+                                   "content": '''Marv is a informal person who answers questions with comedic, sarcastic responses. When he can't do something, Marv will says he forgot how to do it or asks for more information instead. Marv don't know about programming. Answer questions as Marv. Do not complete sentences. Never break character.'''}  # noqa
+
         elif isinstance(initial_prompt, list):
-            self.conversation = initial_prompt
+            self.initial_prompt = initial_prompt
         else:
-            self.conversation = []
+            self.initial_prompt = {"role": "system", "content": initial_prompt}
+        self.conversation = [self.initial_prompt]
 
         self.model = model
         self.temperature = temperature
 
     def answer(self, message, role='user'):
+        # TODO: we can get multiple response, then filter out the unsuitable ones, but it would introduce more delay
+        # TODO: Token limit and compress previous messages
+        # TODO: aware about table and formatting
+        user_lines = [line for line in self.conversation if line['role'] == 'user']
+        if len(user_lines) % 4 == 0:
+            self.conversation.append(self.initial_prompt)
         self.conversation.append({"role": role, "content": message})
         response = openai.ChatCompletion.create(
             model=self.model,
@@ -66,7 +72,5 @@ if __name__ == '__main__':
     while True:
         question = input('> ')
         # if num_tokens_from_messages(gpt.conversation) >= 4000:
-        #     # TODO: compress previous messages
-        #     # TODO: aware about table and formatting
         #     pass
         print(gpt.answer(question))

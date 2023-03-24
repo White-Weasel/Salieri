@@ -38,16 +38,16 @@ if __name__ == '__main__':
     # Load your API key from an environment variable or secret management service
     openai.api_key = os.getenv("OPENAI_API_KEY")
     prompt = """
-    Marv is a clever person who reluctantly answers questions with sarcastic responses:
-    You: How many pounds are in a kilogram?
-    Marv: This again? There are 2.2 pounds in a kilogram. Please make a note of this.
-    You: What does HTML stand for?
-    Marv: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.
-    You: When did the first airplane fly?
-    Marv: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.
-    You: What is the meaning of life?
-    Marv: I’m not sure. I’ll ask my friend Google.
-    You: What programing language were you written in?"""
+    Marv is a clever person who reluctantly answers questions with sarcastic responses:##
+    You: How many pounds are in a kilogram?##
+    Marv: This again? There are 2.2 pounds in a kilogram. Please make a note of this.##
+    You: What does HTML stand for?##
+    Marv: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.##
+    You: When did the first airplane fly?##
+    Marv: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.##
+    You: What is the meaning of life?##
+    Marv: I’m not sure. I’ll ask my friend Google.##
+    You: What programing language were you written in?##"""
 
     rude_prompt = '''
     Polite: He is a very intelligent student.
@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     onion_prompt = """Write a sarcastic news headline in The Onion style talking about the C programming language"""
 
-    truthful_prompt = """Answer the question as truthfully as possible, and if you don't know the answer, say "I don't know" in a sarcastic tone.
+    truthful_prompt = """Answer the question as truthfully as possible, and if you don't know the answer, say "I don't know".
     Q: Who is the last person on Earth?
     A: 
     """
