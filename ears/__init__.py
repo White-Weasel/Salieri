@@ -13,7 +13,8 @@ import whisper
 from queue import Queue
 from sys import platform
 import logging
-from utls import StopableThread
+
+import brain
 
 # ---- speech_recognition params ----
 # How real time the recording is in seconds. The default from example is 2, maybe a bigger value like 12-20 is better?
@@ -31,6 +32,7 @@ INPUT_DEVICE = 'pulse'
 
 MODEL = 'tiny.en'
 logger = logging.getLogger(__name__)
+logger.level = logging.DEBUG
 
 
 def get_microphone():
@@ -90,11 +92,11 @@ def main():
             print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
 
 
-class Ears(StopableThread):
-    def __init__(self, conversation_queue: Queue, input_device=None, audio_model=None, diarization=False,
+class Ears:
+    def __init__(self, brain, input_device=None, audio_model=None, diarization=False,
                  *args, **kwargs):
         super().__init__()
-        assert conversation_queue is not None, 'No conversation queue provided.'
+        assert brain is not None
         if not input_device:
             input_device = get_microphone()
         self.input_device = input_device
@@ -102,24 +104,26 @@ class Ears(StopableThread):
             audio_model = whisper.load_model(MODEL)
         self.audio_model = audio_model
 
-        self.conversation_queue = conversation_queue
+        self.brain = brain
         self.phrase_audio_queue = Queue()
 
-        self.recorder = sr.Recognizer()
-        with get_microphone() as self.source:
-            self.recorder.adjust_for_ambient_noise(self.source)
-        # recorder.dynamic_energy_threshold = True
-        self.recorder.dynamic_energy_threshold = False
-        self.recorder.energy_threshold = ENERGY_THRESHOLD
-        self.recorder.pause_threshold = PHRASE_TIMEOUT
-        self.stop_recording_func = lambda: True
+        self._stop_lock = False
 
+    # noinspection PyAttributeOutsideInit
     def listen(self):
         """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
-        self.stop_recording_func = self.recorder.listen_in_background(self.source, self.record_callback,
-                                                                      phrase_time_limit=PHRASE_LENGTH_LIMIT)
-        self.start()
+        assert not self._stop_lock
+        recorder = sr.Recognizer()
+        with get_microphone() as self.source:
+            recorder.adjust_for_ambient_noise(self.source)
+        recorder.dynamic_energy_threshold = True
+        # recorder.dynamic_energy_threshold = False
+        recorder.energy_threshold = ENERGY_THRESHOLD
+        # recorder.pause_threshold = PHRASE_TIMEOUT
+        self.stop_recording_func = recorder.listen_in_background(self.source, self.record_callback,
+                                                                 phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
+        self.thread_target()
 
     def record_callback(self, _, audio: sr.AudioData) -> None:
         """
@@ -130,6 +134,10 @@ class Ears(StopableThread):
         audio.end_time_stamp = time.perf_counter()
         self.phrase_audio_queue.put(audio)
         logger.debug("phrase end")
+        # result = self.recorder.recognize_whisper_api(audio,
+        #                                              api_key='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')
+        # text = result.strip()
+        # self.conversation_queue.put(text)
 
     def thread_target(self):
         conversation = []
@@ -137,19 +145,28 @@ class Ears(StopableThread):
             if not self.phrase_audio_queue.empty():
                 phrase_audio = self.phrase_audio_queue.get()
                 phrase_end_time_stamp = phrase_audio.end_time_stamp
+                # convert audio to numpy array
                 phrase_audio = np.frombuffer(phrase_audio.frame_data, np.int16).flatten().astype(np.float32) / 32768.0
-                # FIXME: This line is painfully slow, 70-80 seconds on my work pc
+
+                # transcribe
+                ws_time = time.perf_counter()
                 result = self.audio_model.transcribe(phrase_audio, fp16=torch.cuda.is_available())
-                e_time = time.perf_counter()
+                we_time = time.perf_counter()
+
                 text = result['text'].strip()
-                # conversation.append(text)
-                # os.system('cls' if os.name == 'nt' else 'clear')
-                # for line in conversation:
-                #     print(line)
-                # # Flush stdout.
-                # print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
-                self.conversation_queue.put(text)
-                logger.debug(f"Ear heard: {text}\nDelay:{e_time - phrase_end_time_stamp} seconds")
+                conversation.append(f"Q: {text}")
+                # get language model response
+                answer = self.brain.languageProcessor.answer(text)
+                conversation.append(f"A: {answer}")
+
+                e_time = time.perf_counter()
+                os.system('cls' if os.name == 'nt' else 'clear')
+                for line in conversation:
+                    print(line)
+                # Flush stdout.
+                print(f"--- whisper transcribe time: {we_time - ws_time} seconds ---", flush=True)
+                print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
+            time.sleep(0.05)
 
     def stop(self):
         self._stop_lock = True
@@ -157,4 +174,7 @@ class Ears(StopableThread):
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+
+    b = brain.Brain()
+    b.wake_up()
