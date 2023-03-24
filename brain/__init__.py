@@ -1,4 +1,3 @@
-import threading
 import logging
 from .LanguageProcessor import LanguageProcessor
 from ears import Ears
@@ -25,19 +24,18 @@ class Brain(StopableThread):
         self.conversation_queue = Queue()
         self.languageProcessor = LanguageProcessor(model=llm_model, initial_prompt=conversation)
 
-        self.ears = Ears(conversation_queue=self.conversation_queue,
-                         input_device=audio_input, audio_model=stt_model, diarization=diarization)
+        self.ears = Ears(self, input_device=audio_input, audio_model=stt_model, diarization=diarization)
 
     def wake_up(self):
         self.ears.listen()
-        self.start()
+        # self.start()
 
     def sleep(self):
         self.ears.stop()
-        self.stop()
-
-    def thread_target(self):
-        while not self._stop_lock:
-            if not self.conversation_queue.empty():
-                message = self.conversation_queue.get()
-                answer = self.languageProcessor.answer(message)
+        # self.stop()
+    #
+    # def thread_target(self):
+    #     while not self._stop_lock:
+    #         if not self.conversation_queue.empty():
+    #             message = self.conversation_queue.get()
+    #             answer = self.languageProcessor.answer(message)
