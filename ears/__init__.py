@@ -12,7 +12,8 @@ import torch
 import whisper
 from queue import Queue
 from sys import platform
-import threading
+import logging
+from utls import StopableThread
 
 # ---- speech_recognition params ----
 # How real time the recording is in seconds. The default from example is 2, maybe a bigger value like 12-20 is better?
@@ -28,7 +29,8 @@ ENERGY_THRESHOLD = 300
 INPUT_DEVICE = 'pulse'
 # -----------------------------------
 
-MODEL = 'base.en'
+MODEL = 'tiny.en'
+logger = logging.getLogger(__name__)
 
 
 def get_microphone():
@@ -88,38 +90,70 @@ def main():
             print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
 
 
-class Ears(threading.Thread):
-    # FIXME: Copy the StopableThread over and use it for this class
-    def __init__(self, input_device=None, audio_model=None, diarization=False, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class Ears(StopableThread):
+    def __init__(self, conversation_queue: Queue, input_device=None, audio_model=None, diarization=False,
+                 *args, **kwargs):
+        super().__init__()
+        assert conversation_queue is not None, 'No conversation queue provided.'
         if not input_device:
             input_device = get_microphone()
         self.input_device = input_device
         if not audio_model:
             audio_model = whisper.load_model(MODEL)
         self.audio_model = audio_model
+
+        self.conversation_queue = conversation_queue
         self.phrase_audio_queue = Queue()
 
-    def listen(self):
-        """ Run on another thread, constantly listening to the input device. Call"""
-        self.start()
+        self.recorder = sr.Recognizer()
+        with get_microphone() as self.source:
+            self.recorder.adjust_for_ambient_noise(self.source)
+        # recorder.dynamic_energy_threshold = True
+        self.recorder.dynamic_energy_threshold = False
+        self.recorder.energy_threshold = ENERGY_THRESHOLD
+        self.recorder.pause_threshold = PHRASE_TIMEOUT
+        self.stop_recording_func = lambda: True
 
-    def run(self):
+    def listen(self):
+        """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
+        self.stop_recording_func = self.recorder.listen_in_background(self.source, self.record_callback,
+                                                                      phrase_time_limit=PHRASE_LENGTH_LIMIT)
+        self.start()
+        logger.debug("Ears is listening")
+
+    def record_callback(self, _, audio: sr.AudioData) -> None:
+        """
+        Threaded callback function to receive audio data when recordings finish.
+        audio: An AudioData containing the recorded bytes.
+        """
+        # Grab the raw bytes and push it into the thread safe queue.
+        audio.end_time_stamp = time.perf_counter()
+        self.phrase_audio_queue.put(audio)
+        logger.debug("phrase end")
+
+    def thread_target(self):
         conversation = []
-        while True:
+        while not self._stop_lock:
             if not self.phrase_audio_queue.empty():
                 phrase_audio = self.phrase_audio_queue.get()
                 phrase_end_time_stamp = phrase_audio.end_time_stamp
                 phrase_audio = np.frombuffer(phrase_audio.frame_data, np.int16).flatten().astype(np.float32) / 32768.0
+                # FIXME: This line is painfully slow, 70-80 seconds on my work pc
                 result = self.audio_model.transcribe(phrase_audio, fp16=torch.cuda.is_available())
                 e_time = time.perf_counter()
                 text = result['text'].strip()
-                conversation.append(text)
-                os.system('cls' if os.name == 'nt' else 'clear')
-                for line in conversation:
-                    print(line)
-                # Flush stdout.
-                print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
+                # conversation.append(text)
+                # os.system('cls' if os.name == 'nt' else 'clear')
+                # for line in conversation:
+                #     print(line)
+                # # Flush stdout.
+                # print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
+                self.conversation_queue.put(text)
+                logger.debug(f"Ear heard: {text}\nDelay:{e_time - phrase_end_time_stamp} seconds")
+
+    def stop(self):
+        self._stop_lock = True
+        self.stop_recording_func()
 
 
 if __name__ == '__main__':
