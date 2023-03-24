@@ -5,6 +5,7 @@ pyngrok
 nest-asyncio
 
 pyaudio
+openai-whisper
 SpeechRecognition
 --extra-index-url https://download.pytorch.org/whl/cu116
 torch
