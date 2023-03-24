@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request
-import brain
+from brain import Brain
 import logging
 
 app = FastAPI()
-brain = brain.Brain()
+Salie = Brain()
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -11,15 +11,33 @@ logger.setLevel(logging.DEBUG)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"question": "Hello World"}
 
 
 @app.post("/conversation")
-async def root(request: Request):
+async def conversation(request: Request):
     req = await request.json()
-    question = req['message']
-    answer = brain.languageProcessor.answer(question)
-    logger.log(level=logging.DEBUG, msg=brain.languageProcessor.prompt)
+    question = req['question']
+    answer = Salie.languageProcessor.answer(question)
+    logger.log(level=logging.DEBUG, msg=Salie.languageProcessor.model.conversation)
     return {
-        "message": answer,
+        "answer": answer,
+    }
+
+
+@app.post("/sleep")
+async def salie_sleep(request: Request):
+    Salie.sleep()
+    logger.debug('Salie is sleeping')
+    return {
+        'status': 'Successful'
+    }
+
+
+@app.post("/wake_up")
+async def salie_wakeup(request: Request):
+    Salie.wake_up()
+    logger.debug('Salie is waking up')
+    return {
+        'status': 'Successful'
     }
