@@ -2,3 +2,4 @@ Use text embedding to encode the past conversations, use text decoding to get th
 We could use a LLM like GPT3 to summary old conversations into a paragraph like: "Marv told me: .... " and store it for future context.
 May be this will give the chat bot the ability to remember old conversation and context without using a massive input.
 This, however will not make the bot learn from old conversation. To learn from it, we might need to constantly fine tune it.
+If this works, the prompt will the consist of 3 parts: the constantly changing context part, the most recent conversation and the newest question from which the context was bring fort for.
