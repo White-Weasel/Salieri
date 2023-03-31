@@ -14,7 +14,6 @@ from queue import Queue
 from sys import platform
 import logging
 
-import brain
 
 # ---- speech_recognition params ----
 # How real time the recording is in seconds. The default from example is 2, maybe a bigger value like 12-20 is better?
@@ -23,7 +22,7 @@ import brain
 PHRASE_LENGTH_LIMIT = None
 # How much empty space between recordings before we consider it a new line in the transcription (seconds)
 # TODO: higher time out for conversation, maybe 2.5 to 3 seconds?
-PHRASE_TIMEOUT = 1.5
+PHRASE_TIMEOUT = 1
 # Energy level for mic to detect
 ENERGY_THRESHOLD = 300
 # input device name, only works on Linux
@@ -96,7 +95,6 @@ class Ears:
     def __init__(self, brain, input_device=None, audio_model=None, diarization=False,
                  *args, **kwargs):
         super().__init__()
-        assert brain is not None
         if not input_device:
             input_device = get_microphone()
         self.input_device = input_device
@@ -154,10 +152,13 @@ class Ears:
                 we_time = time.perf_counter()
 
                 text = result['text'].strip()
-                conversation.append(f"Q: {text}")
-                # get language model response
-                answer = self.brain.languageProcessor.answer(text)
-                conversation.append(f"A: {answer}")
+                if self.brain:
+                    conversation.append(f"Q: {text}")
+                    # get language model response
+                    answer = self.brain.languageProcessor.answer(text)
+                    conversation.append(f"A: {answer}")
+                else:
+                    conversation.append(text)
 
                 e_time = time.perf_counter()
                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -176,5 +177,5 @@ class Ears:
 if __name__ == '__main__':
     # main()
 
-    b = brain.Brain()
-    b.wake_up()
+    e = Ears(None)
+    e.listen()
