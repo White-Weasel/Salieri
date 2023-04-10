@@ -1,10 +1,10 @@
 import logging
 from queue import Queue
-
 from ears import Ears
 from utls import StopableThread
 from .LanguageProcessor import LanguageProcessor
 from .models import ChatGPT
+from .Memory import ShortTermMemory, LongTermMemory
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +22,8 @@ class Brain(StopableThread):
         else:
             Brain.__instance = self
 
-        self.longTermMemory = None
-        self.shortTermMemory = None
+        self.longTermMemory = ShortTermMemory()
+        self.shortTermMemory = LongTermMemory()
         self.conversation_queue = Queue()
         self.languageProcessor = LanguageProcessor(model=llm_model, initial_prompt=conversation)
 
