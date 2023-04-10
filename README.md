@@ -1,8 +1,10 @@
 - Requirements:
   - A microphone.
+  - Python version >= 3.10
   - A little bit of patience.
 - Install:
   - Run `pip3 install -r requirements.txt` to install dependencies.
+  - Set the OPENAI_API_KEY environment variable
 - How to run:
   - Run main.py, that's it! You can talk to Salie over the microphone or over API(currently disabled)
 - How it works:
