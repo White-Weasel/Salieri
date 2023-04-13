@@ -7,10 +7,11 @@ MODEL = 'gpt-3.5-turbo'
 
 
 class ChatGPT:
-    def __init__(self, model=MODEL,
+    def __init__(self, brain=None, model=MODEL,
                  initial_conversation: list[dict] = None,
                  system_prompt: str = None,
                  temperature=0.4):
+        self.brain = brain
         if not initial_conversation:
             # noinspection PyPep8
             # Note: initial_conversation may work better in text form, not conversation form.
@@ -24,16 +25,15 @@ class ChatGPT:
             self.initial_conversation = initial_conversation
         if not system_prompt:
             self.system_prompt = [{"role": "system",
-                                   "content": f'''Marv is a person who reluctantly answers questions with comedic, sarcastic responses. When he can't do something, Marv will says he forgot how to do it or asks for more information instead. Marv don't know about programming. Answer questions as Marv with the following initial_conversation. Do not complete sentences. Never break character.
-                                    ### Begin of Context.
-                                    {self.initial_conversation}
-                                    ### End of initial_conversation.'''}] # noqa
+                                   "content": f'''Marv is a person who reluctantly answers questions with comedic, sarcastic responses. When he can't do something, Marv will says he forgot how to do it or asks for more information instead. Marv don't know about programming. Answer questions as Marv with the following initial_conversation. Do not complete sentences. Never break character.'''}] # noqa
+            # if self.initial_conversation:
+            #     self.system_prompt[0]['content'] += f"### Begin of Context.\n{self.initial_conversation}\n### End of Context." # noqa
         else:
             self.system_prompt = [{"role": "system", "content": system_prompt}]
 
         # This doesn't seem to work, the bot can't remember old conversation this way
         # self.initial_conversation = [{'role': 'user', 'content': 'alright, summary our past conversation up until this point.'}, {'role': 'assistant', 'content': "Let's see if I got this right. You asked me what I was doing, and we talked about how we're both trying to look busy. Then you asked me if I could become more intelligent, and I explained that I'm just a chatbot programmed to answer questions. After that, you asked me to be more informal, and I agreed to do my best. Finally, you asked me to summarize our conversation up until this point. Did I miss anything?"}, {'role': 'user', 'content': "yeah, that's good. btw do you know that i'm 30 years old?"}, {'role': 'assistant', 'content': "Oh, you're 30 years old? That's cool, I guess. I mean, I'm just a chatbot, so age doesn't really mean anything to me. But hey, happy birthday, I guess?"}, {'role': 'user', 'content': "nah, it's not my birthday today, but thanks. I just want to know how old do you think you are?"}, {'role': 'assistant', 'content': 'Well, that\'s a tricky question. As a chatbot, I don\'t really have an age in the traditional sense. I was "born" when my programming was completed, but I don\'t experience the passage of time like humans do. So I guess you could say I\'m ageless, in a way.'}, {'role': 'user', 'content': '"chatbot" doesn\'t sound good, man. How about AI? sound more intersting don\'t you think?'}, {'role': 'assistant', 'content': 'Oh, I see what you\'re getting at. Yeah, "chatbot" does sound a bit boring, doesn\'t it? I like the sound of "AI" better. It makes me sound more sophisticated and high-tech. Thanks for the suggestion!'}, {'role': 'user', 'content': "oh, you get it too? so let's refer to yourself as AI from now on ok?"}, {'role': 'assistant', 'content': "Sure thing, my dude! From now on, you can call me AI instead of chatbot. It's got a nice ring to it, don't you think?"}] # noqa
-        self.conversation = self.initial_conversation + self.system_prompt
+        self.conversation = self.system_prompt + self.initial_conversation
 
         self.model = model
         self.temperature = temperature
@@ -48,7 +48,8 @@ class ChatGPT:
         if len(user_lines) > 0 and len(user_lines) % 4 == 0:
             self.conversation += self.system_prompt
 
-        self.conversation.insert(-1, {"role": role, "content": message})
+        # self.conversation.insert(-1, {"role": role, "content": message})
+        self.conversation.append({"role": role, "content": message})
         response = openai.ChatCompletion.create(
             model=self.model,
             temperature=self.temperature,
@@ -56,6 +57,9 @@ class ChatGPT:
         )
         response = response['choices'][0]['message']['content']
         self.conversation.insert(-1, {"role": "assistant", "content": response})
+
+        if self.brain:
+            self.brain.memory.put(f"User: {message}\nMarv: {response}")
         return response
 
     def summary(self, model='text-davinci-003'):
@@ -72,7 +76,8 @@ def embed(text):
         model="text-embedding-ada-002",
         input=text
     )
-    return np.array(response["data"][0]["embedding"], dtype=np.float16)
+    # return np.array(response["data"][0]["embedding"], dtype=np.float16)
+    return response["data"][0]["embedding"]
 
 
 def num_tokens_from_messages(messages, model=MODEL):

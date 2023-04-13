@@ -1,4 +1,5 @@
 import logging
+import threading
 from queue import Queue
 from ears import Ears
 from utls import StopableThread
@@ -22,10 +23,10 @@ class Brain(StopableThread):
         else:
             Brain.__instance = self
 
-        self.longTermMemory = ShortTermMemory()
-        self.shortTermMemory = LongTermMemory()
+        # self.longTermMemory = LongTermMemory()
+        self.memory = ShortTermMemory()
         self.conversation_queue = Queue()
-        self.languageProcessor = LanguageProcessor(model=llm_model, initial_conversation=conversation)
+        self.languageProcessor = LanguageProcessor(self, model=llm_model, initial_conversation=conversation)
 
         self.ears = Ears(self, input_device=audio_input, audio_model=stt_model, diarization=diarization)
 
