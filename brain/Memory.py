@@ -3,7 +3,7 @@ import queue
 import uuid
 from qdrant_client import QdrantClient
 from qdrant_client.http import models, exceptions
-from models.ChatGPT import embed
+from .models.ChatGPT import embed
 
 logger = logging.getLogger(__name__)
 
@@ -15,10 +15,10 @@ class LongTermMemory:
         self.client = QdrantClient(host, port=port)
         self.collection_name = collection_name
         try:
-            client.get_collection(collection_name=COLLECTION_NAME)
+            self.client.get_collection(collection_name=self.collection_name)
         except exceptions.UnexpectedResponse:
             logger.warning(f"Collection {self.collection_name} not existed, creating collection")
-            client.recreate_collection(
+            self.client.recreate_collection(
                 collection_name=self.collection_name,
                 vectors_config={
                     "embedded_vector": models.VectorParams(size=1536, distance=models.Distance.DOT),
