@@ -13,8 +13,8 @@ class LanguageProcessor:
         self.initial_conversation = initial_conversation
         self.model = model(brain, initial_prompt=initial_conversation, *args, **kwargs)
 
-    def answer(self, message):
-        answer = self.model.answer(message)
+    def answer(self, message, user):
+        answer = self.model.answer(message, user)
         logger.debug(f"Brain answer: {answer}")
         self.conversation = self.model.conversation
         return answer
