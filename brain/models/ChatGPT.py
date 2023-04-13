@@ -23,11 +23,11 @@ class ChatGPT:
         else:
             self.initial_conversation = initial_conversation
         if not system_prompt:
-            self.system_prompt = {"role": "system",
+            self.system_prompt = [{"role": "system",
                                    "content": f'''Marv is a person who reluctantly answers questions with comedic, sarcastic responses. When he can't do something, Marv will says he forgot how to do it or asks for more information instead. Marv don't know about programming. Answer questions as Marv with the following initial_conversation. Do not complete sentences. Never break character.
                                     ### Begin of Context.
                                     {self.initial_conversation}
-                                    ### End of initial_conversation.'''}  # noqa
+                                    ### End of initial_conversation.'''}] # noqa
         else:
             self.system_prompt = [{"role": "system", "content": system_prompt}]
 

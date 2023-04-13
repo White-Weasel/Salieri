@@ -25,7 +25,7 @@ class Brain(StopableThread):
         self.longTermMemory = ShortTermMemory()
         self.shortTermMemory = LongTermMemory()
         self.conversation_queue = Queue()
-        self.languageProcessor = LanguageProcessor(model=llm_model, initial_prompt=conversation)
+        self.languageProcessor = LanguageProcessor(model=llm_model, initial_conversation=conversation)
 
         self.ears = Ears(self, input_device=audio_input, audio_model=stt_model, diarization=diarization)
 
