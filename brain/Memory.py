@@ -1,5 +1,6 @@
 import logging
 import queue
+import threading
 import uuid
 from qdrant_client import QdrantClient
 from qdrant_client.http import models, exceptions
@@ -7,7 +8,7 @@ from .models.ChatGPT import embed
 
 logger = logging.getLogger(__name__)
 
-SHORT_MEM_LENGTH = 5
+SHORT_MEM_LENGTH = 3
 
 
 class LongTermMemory:
@@ -32,7 +33,7 @@ class LongTermMemory:
             query_vector=("embedded_vector", vector),
             limit=limit,
         )
-        return [r.payload for r in result]
+        return '\n'.join([r.payload['conversation'] for r in result])
 
     def save_conversation(self, conversation, vector):
         self.client.upsert(
@@ -53,14 +54,17 @@ class ShortTermMemory(queue.Queue):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._conversation_count = 0
+        self.long_term_memory = LongTermMemory()
 
     def put(self, *args, **kwargs):
         super().put(*args, **kwargs)
         self._conversation_count += 1
         if self._conversation_count >= SHORT_MEM_LENGTH:
-            self.convert_to_long_term()
+            self._conversation_count = 0
+            logger.warning("Saving conversation")
+            threading.Thread(target=self.convert_to_long_term).start()
 
-    def convert_to_long_term(self, long_term_memory: LongTermMemory = None):
+    def convert_to_long_term(self):
         """Empty the queue and save them into LongTermMemory. This method should run on another thread."""
         conver = []
         while not self.empty():
@@ -71,7 +75,7 @@ class ShortTermMemory(queue.Queue):
         else:
             convo_text = '\n'.join([line for line in conver])
         vector = embed(convo_text)
-        long_term_memory.save_conversation(conver, vector)
+        self.long_term_memory.save_conversation(convo_text, vector)
 
 
 if __name__ == '__main__':

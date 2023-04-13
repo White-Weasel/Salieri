@@ -1,6 +1,8 @@
-from fastapi import FastAPI, Request
-from brain import Brain
 import logging
+
+from fastapi import FastAPI, Request, Response, status
+
+from brain import Brain
 
 app = FastAPI()
 Salie = Brain()
@@ -35,8 +37,12 @@ async def salie_sleep(request: Request):
 
 
 @app.post("/wake_up")
-async def salie_wakeup(request: Request):
-    Salie.wake_up()
+async def salie_wakeup(request: Request, response: Response):
+    try:
+        Salie.wake_up()
+    except AssertionError:
+        response.status_code = 400
+        return {'status': 'failed', 'message': 'Salie has already wake up'}
     logger.debug('Salie is waking up')
     return {
         'status': 'Successful'

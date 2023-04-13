@@ -5,6 +5,7 @@
 # TODO: add a sentiment detector to use with the language model.
 # TODO: If possible, combine a language model with word-to-word speech to text
 import os
+import threading
 import time
 import numpy as np
 import speech_recognition as sr
@@ -95,8 +96,6 @@ class Ears:
     def __init__(self, brain, input_device=None, audio_model=None, diarization=False,
                  *args, **kwargs):
         super().__init__()
-        if not input_device:
-            input_device = get_microphone()
         self.input_device = input_device
         if not audio_model:
             audio_model = whisper.load_model(MODEL)
@@ -105,23 +104,26 @@ class Ears:
         self.brain = brain
         self.phrase_audio_queue = Queue()
 
-        self._stop_lock = False
+        self._stop_lock = True
 
     # noinspection PyAttributeOutsideInit
     def listen(self):
         """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
-        assert not self._stop_lock
+        assert self._stop_lock
         recorder = sr.Recognizer()
-        with get_microphone() as self.source:
-            recorder.adjust_for_ambient_noise(self.source)
+        if not self.input_device:
+            self.input_device = get_microphone()
+        with self.input_device:
+            recorder.adjust_for_ambient_noise(self.input_device)
         recorder.dynamic_energy_threshold = True
         # recorder.dynamic_energy_threshold = False
         recorder.energy_threshold = ENERGY_THRESHOLD
         # recorder.pause_threshold = PHRASE_TIMEOUT
-        self.stop_recording_func = recorder.listen_in_background(self.source, self.record_callback,
+        self.stop_recording_func = recorder.listen_in_background(self.input_device, self.record_callback,
                                                                  phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
-        self.thread_target()
+        self._stop_lock = False
+        threading.Thread(target=self.thread_target).start()
 
     def record_callback(self, _, audio: sr.AudioData) -> None:
         """
