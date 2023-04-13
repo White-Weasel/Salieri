@@ -19,8 +19,11 @@ async def root():
 @app.post("/conversation")
 async def conversation(request: Request):
     req = await request.json()
+    if 'question' not in req:
+        return {'Error': 'Missing question.'}
+    user = req.get('user')
     question = req['question']
-    answer = Salie.languageProcessor.answer(question)
+    answer = Salie.languageProcessor.answer(question, user)
     logger.log(level=logging.DEBUG, msg=Salie.languageProcessor.model.conversation)
     return {
         "answer": answer,

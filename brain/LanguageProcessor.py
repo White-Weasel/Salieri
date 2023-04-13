@@ -11,7 +11,7 @@ class LanguageProcessor:
         self.brain = brain
         self.conversation = None
         self.initial_conversation = initial_conversation
-        self.model = model(brain, system_prompt=initial_conversation, *args, **kwargs)
+        self.model = model(brain, initial_prompt=initial_conversation, *args, **kwargs)
 
     def answer(self, message):
         answer = self.model.answer(message)

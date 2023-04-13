@@ -27,7 +27,8 @@ class LongTermMemory:
             )
         pass
 
-    def conversation_search(self, vector, limit=3):
+    def conversation_search(self, message, limit=3):
+        vector = embed(message)
         result = self.client.search(
             collection_name=self.collection_name,
             query_vector=("embedded_vector", vector),
@@ -69,6 +70,8 @@ class ShortTermMemory(queue.Queue):
         conver = []
         while not self.empty():
             conver.append(self.get())
+        if not conver:
+            return
         if isinstance(conver[0], dict):
             convo_text = ''.join(
                 [f"{'User' if line['role'] == 'user' else 'Marv'}: {line['content']}\n" for line in conver])
