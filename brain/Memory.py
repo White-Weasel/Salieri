@@ -32,6 +32,7 @@ class LongTermMemory:
         result = self.client.search(
             collection_name=self.collection_name,
             query_vector=("embedded_vector", vector),
+            score_threshold=0.8,
             limit=limit,
         )
         return '\n'.join([r.payload['conversation'] for r in result])
