@@ -5,6 +5,7 @@
 # TODO: add a sentiment detector to use with the language model.
 # TODO: If possible, combine a language model with word-to-word speech to text
 import os
+import threading
 import time
 import numpy as np
 import speech_recognition as sr
@@ -14,7 +15,6 @@ from queue import Queue
 from sys import platform
 import logging
 
-import brain
 
 # ---- speech_recognition params ----
 # How real time the recording is in seconds. The default from example is 2, maybe a bigger value like 12-20 is better?
@@ -23,7 +23,7 @@ import brain
 PHRASE_LENGTH_LIMIT = None
 # How much empty space between recordings before we consider it a new line in the transcription (seconds)
 # TODO: higher time out for conversation, maybe 2.5 to 3 seconds?
-PHRASE_TIMEOUT = 1.5
+PHRASE_TIMEOUT = 1
 # Energy level for mic to detect
 ENERGY_THRESHOLD = 300
 # input device name, only works on Linux
@@ -96,9 +96,6 @@ class Ears:
     def __init__(self, brain, input_device=None, audio_model=None, diarization=False,
                  *args, **kwargs):
         super().__init__()
-        assert brain is not None
-        if not input_device:
-            input_device = get_microphone()
         self.input_device = input_device
         if not audio_model:
             audio_model = whisper.load_model(MODEL)
@@ -107,23 +104,26 @@ class Ears:
         self.brain = brain
         self.phrase_audio_queue = Queue()
 
-        self._stop_lock = False
+        self._stop_lock = True
 
     # noinspection PyAttributeOutsideInit
     def listen(self):
         """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
-        assert not self._stop_lock
+        assert self._stop_lock
         recorder = sr.Recognizer()
-        with get_microphone() as self.source:
-            recorder.adjust_for_ambient_noise(self.source)
+        if not self.input_device:
+            self.input_device = get_microphone()
+        with self.input_device:
+            recorder.adjust_for_ambient_noise(self.input_device)
         recorder.dynamic_energy_threshold = True
         # recorder.dynamic_energy_threshold = False
         recorder.energy_threshold = ENERGY_THRESHOLD
         # recorder.pause_threshold = PHRASE_TIMEOUT
-        self.stop_recording_func = recorder.listen_in_background(self.source, self.record_callback,
+        self.stop_recording_func = recorder.listen_in_background(self.input_device, self.record_callback,
                                                                  phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
-        self.thread_target()
+        self._stop_lock = False
+        threading.Thread(target=self.thread_target).start()
 
     def record_callback(self, _, audio: sr.AudioData) -> None:
         """
@@ -154,10 +154,13 @@ class Ears:
                 we_time = time.perf_counter()
 
                 text = result['text'].strip()
-                conversation.append(f"Q: {text}")
-                # get language model response
-                answer = self.brain.languageProcessor.answer(text)
-                conversation.append(f"A: {answer}")
+                if self.brain:
+                    conversation.append(f"Q: {text}")
+                    # get language model response
+                    answer = self.brain.languageProcessor.answer(text)
+                    conversation.append(f"A: {answer}")
+                else:
+                    conversation.append(text)
 
                 e_time = time.perf_counter()
                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -176,5 +179,5 @@ class Ears:
 if __name__ == '__main__':
     # main()
 
-    b = brain.Brain()
-    b.wake_up()
+    e = Ears(None)
+    e.listen()
