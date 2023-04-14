@@ -9,6 +9,7 @@ from .models.ChatGPT import embed
 logger = logging.getLogger(__name__)
 
 SHORT_MEM_LENGTH = 3
+MIN_SCORE = 0.75
 
 
 class LongTermMemory:
@@ -32,7 +33,7 @@ class LongTermMemory:
         result = self.client.search(
             collection_name=self.collection_name,
             query_vector=("embedded_vector", vector),
-            score_threshold=0.8,
+            score_threshold=MIN_SCORE,
             limit=limit,
         )
         return '\n'.join([r.payload['conversation'] for r in result])
