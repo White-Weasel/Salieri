@@ -1,6 +1,8 @@
-from fastapi import FastAPI, Request
-from brain import Brain
 import logging
+
+from fastapi import FastAPI, Request, Response, status
+
+from brain import Brain
 
 app = FastAPI()
 Salie = Brain()
@@ -17,8 +19,11 @@ async def root():
 @app.post("/conversation")
 async def conversation(request: Request):
     req = await request.json()
+    if 'question' not in req:
+        return {'Error': 'Missing question.'}
+    user = req.get('user')
     question = req['question']
-    answer = Salie.languageProcessor.answer(question)
+    answer = Salie.languageProcessor.answer(question, user)
     logger.log(level=logging.DEBUG, msg=Salie.languageProcessor.model.conversation)
     return {
         "answer": answer,
@@ -35,8 +40,12 @@ async def salie_sleep(request: Request):
 
 
 @app.post("/wake_up")
-async def salie_wakeup(request: Request):
-    Salie.wake_up()
+async def salie_wakeup(request: Request, response: Response):
+    try:
+        Salie.wake_up()
+    except AssertionError:
+        response.status_code = 400
+        return {'status': 'failed', 'message': 'Salie has already wake up'}
     logger.debug('Salie is waking up')
     return {
         'status': 'Successful'
