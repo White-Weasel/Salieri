@@ -29,7 +29,7 @@ class Gpt3:
                       f"{context}\n" \
                       f"### END OF CONTEXT\n" \
                       f"{conversation}\n" \
-                      f"Marv: "
+                      f"Marv:"
         answer = openai.Completion.create(model=self.model, prompt=full_prompt,
                                           temperature=0.5, max_tokens=256, **kwargs)
         answer = answer["choices"][0]["text"].strip()
