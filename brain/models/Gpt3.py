@@ -31,7 +31,12 @@ class Gpt3:
                       f"{conversation}\n" \
                       f"Marv:"
         answer = openai.Completion.create(model=self.model, prompt=full_prompt,
-                                          temperature=0.5, max_tokens=256, **kwargs)
+                                          temperature=0.5,
+                                          max_tokens=256,
+                                          top_p=1,
+                                          best_of=3,
+                                          frequency_penalty=0.5,
+                                          presence_penalty=0)
         answer = answer["choices"][0]["text"].strip()
         self.conversation.append(f'Marv: {answer}')
 
