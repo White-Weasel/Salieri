@@ -39,7 +39,8 @@ class ChatGPT:
         # TODO: aware about table and formatting
 
         # get context
-        context = self.get_context(message, 3)
+        if self.brain:
+            context = self.get_context(message, 3)
         system_prompt = [{'role': 'system',
                           'content': self.system_prompt + f"\n### Begin of Context.\n{context}\n### End of Context."}]
 

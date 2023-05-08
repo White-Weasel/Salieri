@@ -6,6 +6,7 @@ import openai
 
 class Gpt3:
     def __init__(self, brain=None, initial_prompt=None, model='text-davinci-003'):
+        # TODO: The plain davinci model might be better
         self.brain = brain
         if initial_prompt:
             self.prompt = initial_prompt
@@ -37,6 +38,7 @@ class Gpt3:
                                           best_of=3,
                                           frequency_penalty=0.5,
                                           presence_penalty=0)
+                                          # stop = ["#"]) # noqa
         answer = answer["choices"][0]["text"].strip()
         self.conversation.append(f'Marv: {answer}')
 
