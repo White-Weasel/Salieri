@@ -4,7 +4,7 @@ from queue import Queue
 from ears import Ears
 from utls import StopableThread
 from .LanguageProcessor import LanguageProcessor
-from .models import ChatGPT, Gpt3
+from .models import ChatGPT, Gpt3, CustomGpt3
 from .Memory import ShortTermMemory, LongTermMemory
 
 logger = logging.getLogger(__name__)
@@ -15,7 +15,7 @@ class Brain(StopableThread):
 
     def __init__(self, audio_input=None, stt_model=None, diarization=False,
                  audio_output=None, tts_model=None,
-                 conversation=None, llm_model=Gpt3,
+                 conversation=None, llm_model=CustomGpt3,
                  *args, **kwargs):
         super().__init__()
         if Brain.__instance is not None:
@@ -24,7 +24,7 @@ class Brain(StopableThread):
             Brain.__instance = self
 
         # self.longTermMemory = LongTermMemory()
-        self.memory = ShortTermMemory()
+        self.memory = ShortTermMemory(collection_name="Salie_custom_GPT_memory")
         self.conversation_queue = Queue()
         self.languageProcessor = LanguageProcessor(self, model=llm_model, initial_conversation=conversation)
 

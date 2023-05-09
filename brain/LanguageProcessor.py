@@ -1,13 +1,13 @@
 # TODO: process the answer before showing it would reduce the response time.
 import logging
 from typing import Union, Type
-from .models import ChatGPT, Gpt3, GptJ6B
+from .models import ChatGPT, Gpt3, GptJ6B, CustomGpt3
 
 logger = logging.getLogger(__name__)
 
 
 class LanguageProcessor:
-    def __init__(self, brain, model: Type[Union[ChatGPT, Gpt3, GptJ6B]], initial_conversation=None, *args, **kwargs):
+    def __init__(self, brain, model: Type[Union[ChatGPT, Gpt3, GptJ6B, CustomGpt3]], initial_conversation=None, *args, **kwargs):
         self.brain = brain
         self.conversation = None
         self.initial_conversation = initial_conversation

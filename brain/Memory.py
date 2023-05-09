@@ -54,10 +54,10 @@ class LongTermMemory:
 
 
 class ShortTermMemory(queue.Queue):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, host="localhost", port=6333, collection_name="Salieri_conversation_memory", *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._conversation_count = 0
-        self.long_term_memory = LongTermMemory()
+        self.long_term_memory = LongTermMemory(host, port, collection_name)
 
     def put(self, *args, **kwargs):
         super().put(*args, **kwargs)
