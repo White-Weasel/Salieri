@@ -4,10 +4,21 @@ from fastapi import FastAPI, Request, Response, status
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 from brain import Brain
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="assets"), name="static")
+origins = [
+    "http://localhost:3000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 templates = Jinja2Templates(directory="assets/template")
 Salie = Brain()
 logging.basicConfig(level=logging.DEBUG)
