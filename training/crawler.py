@@ -1,3 +1,5 @@
+import time
+
 import requests
 import praw
 from praw.models import Submission
@@ -13,29 +15,33 @@ import requests.auth
 # access_token = a['access_token']
 
 
-def tree_to_list_recursion(root, limit_to_top: int = None,
+def tree_to_list_recursion(root,
+                           limit_to_top: int = None,
+                           min_score: int = 0,
                            max_depth: int = None,
                            __depth: int = 1):
     reps = [c for c in root.replies]
     root_body = f"/u/{root.author.name}: {root.body}"
+    reps = [rep for rep in reps if rep.score > min_score and rep.author]
     if not reps or (max_depth and __depth >= max_depth):
         return [[root_body]]
-    reps = [rep for rep in reps if rep.score > 0 and rep.author]
     if limit_to_top:
         reps = sorted(reps, key=lambda rep: rep.score, reverse=True)[:limit_to_top]
     result = [[root_body] + c
               for rep in reps
-              for c in tree_to_list_recursion(rep, limit_to_top, max_depth, __depth=__depth + 1)]
+              for c in tree_to_list_recursion(rep, limit_to_top=limit_to_top, max_depth=max_depth, __depth=__depth + 1)]
     return result
 
 
 def get_all_conversation_in_post(submission: Submission,
                                  replace_limit: int = 0,
                                  limit_to_top: int = None,
+                                 min_score: int = 0,
                                  max_depth: int = None,
                                  min_replies: int = 0) -> list[list[str]]:
     """
     Get all conversations in a post
+    :param min_score:
     :param submission: :class:`.Submission` the post to get all conversations
     :param replace_limit: The maximum number of :class:`.MoreComments` instances to replace.
                             Each will need another API call. Set to 0 to delete all of them
@@ -44,7 +50,11 @@ def get_all_conversation_in_post(submission: Submission,
     :param min_replies: min length of the comment chain
     :return:
     """
+    s_time = time.perf_counter()
     submission.comments.replace_more(limit=replace_limit)
+    print(f"replace_more takes {time.perf_counter() - s_time} seconds")
+    # comment_list = [i for i in submission.comments
+    #                 if not isinstance(i, praw.models.reddit.more.MoreComments) and i.author]
     comment_list = [i for i in submission.comments if i.author]
     if limit_to_top:
         comment_list = sorted(comment_list, key=lambda comment: comment.score, reverse=True)[:limit_to_top]
@@ -52,6 +62,7 @@ def get_all_conversation_in_post(submission: Submission,
     for root in comment_list:
         all_messages += tree_to_list_recursion(root,
                                                limit_to_top=limit_to_top,
+                                               min_score=min_score,
                                                max_depth=max_depth)
     return [message for message in all_messages if len(message) >= min_replies]
 
@@ -63,13 +74,20 @@ def main():
         user_agent="anything/0.1",
     )
     print(client.read_only)
+    s_time = time.perf_counter()
     submissions = client.subreddit("CasualConversation").top(limit=10)
+    print(f"Get submissions takes {time.perf_counter() - s_time} seconds")
+    s_time = time.perf_counter()
     submissions = [submission for submission in submissions]
     conversations = [conversation
                      for submission in submissions
-                     for conversation in get_all_conversation_in_post(submission, limit_to_top=3,
-                                                                      min_replies=3, max_depth=None)
+                     for conversation in get_all_conversation_in_post(submission,
+                                                                      # limit_to_top=4,
+                                                                      min_score=10,
+                                                                      min_replies=3,
+                                                                      max_depth=None)
                      ]
+    print(f"Convert data takes {time.perf_counter() - s_time} seconds")
     # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
     # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
     pass

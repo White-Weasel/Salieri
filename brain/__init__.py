@@ -30,6 +30,10 @@ class Brain(StopableThread):
 
         self.ears = Ears(self, input_device=audio_input, audio_model=stt_model, diarization=diarization)
 
+    @property
+    def sleeping(self):
+        return not self.ears.is_listening
+
     def wake_up(self):
         self.ears.listen()
         # self.start()
