@@ -105,6 +105,10 @@ class Ears:
 
         self._stop_lock = True
 
+    @property
+    def is_listening(self):
+        return not self._stop_lock
+
     # noinspection PyAttributeOutsideInit
     def listen(self):
         """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
@@ -118,6 +122,8 @@ class Ears:
         # recorder.dynamic_energy_threshold = False
         recorder.energy_threshold = ENERGY_THRESHOLD
         # recorder.pause_threshold = PHRASE_TIMEOUT
+        # TODO: bandage fix, need to find out later what should we wait for.
+        time.sleep(5)
         self.stop_recording_func = recorder.listen_in_background(self.input_device, self.record_callback,
                                                                  phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
