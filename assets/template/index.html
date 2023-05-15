@@ -30,7 +30,7 @@
             }, error:
                 function (error) {
                     console.log(error);
-                    $('#message').innerHTML(error)
+                    document.getElementById('message').innerHTML = error
                 }
 
         });
@@ -39,6 +39,7 @@
     });
 
     $('#wake-up-btn').click(function (event) {
+        $('#wake-up-btn').prop('disabled', true);
         $.ajax({
             type: "POST",
             url: "http://127.0.0.1:3000/wake_up",
@@ -56,14 +57,16 @@
                 }
             }, error:
                 function (error) {
+                    $('#wake-up-btn').prop('disabled', false);
                     console.log(error);
-                    $('#message').innerHTML(error)
+                    document.getElementById('message').innerHTML = error
                 }
 
         });
     });
 
     $('#sleep-btn').click(function (event) {
+        $('#sleep-btn').prop('disabled', true);
         $.ajax({
             type: "POST",
             url: "http://127.0.0.1:3000/sleep",
@@ -78,8 +81,9 @@
                 }
             }, error:
                 function (error) {
+                    $('#sleep-btn').prop('disabled', false);
                     console.log(error);
-                    $('#message').innerHTML(error)
+                    document.getElementById('message').innerHTML = error
                 }
 
         });
