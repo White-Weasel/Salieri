@@ -10,6 +10,7 @@
 <h3 id="message"></h3>
 <button id="wake-up-btn">Wake up</button>
 <button id="sleep-btn">Sleep</button>
+<button id="clear-memory-btn" style="background-color: red; color: white">Clear memory</button>
 <form></form>
 <script>
     $(document).ready(function () {
@@ -89,6 +90,35 @@
         });
     });
 
+    $('#clear-memory-btn').click(function (event) {
+        $('#clear-memory-btn').prop('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:3000/clear_memory",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            // beforeSend: function () {
+            //     $("#loaderDiv").show();
+            // },
+            success: function (response) {
+                var data = response
+                if (data['success']) {
+                    document.getElementById('message').innerHTML = "Long term memory cleared"
+                    $('#clear-memory-btn').prop('disabled', true);
+                }
+                else {
+                    console.log(data['error'])
+                    console.log(data['traceback'])
+                    document.getElementById('message').innerHTML = data['traceback']
+                }
+            }, error:
+                function (error) {
+                    console.log(error);
+                    document.getElementById('message').innerHTML = error
+                }
+
+        });
+    });
 
 </script>
 </body>
