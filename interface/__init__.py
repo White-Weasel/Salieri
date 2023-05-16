@@ -1,4 +1,5 @@
 import logging
+import traceback
 
 from fastapi import FastAPI, Request, Response, status
 from fastapi.responses import HTMLResponse
@@ -66,9 +67,35 @@ async def salie_wakeup(request: Request, response: Response):
     except AssertionError:
         response.status_code = 400
         return {'success': False, 'message': 'Salie has already wake up'}
-    logger.debug('Salie is waking up')
-    return {
-        'success': True
-    }
+    except Exception as e:
+        traceback_log = ''.join(traceback.format_exception(e))
+        logger.error(traceback_log)
+        return {
+            'success': False,
+            'error': e,
+            'traceback': traceback_log
+        }
+    else:
+        logger.debug('Salie is waking up')
+        return {
+            'success': True
+        }
+
+
+@app.post("/clear_memory")
+async def clear_memory():
+    try:
+        Salie.memory.long_term_memory.clear_memory()
+        return {
+            'success': True
+        }
+    except Exception as e:
+        traceback_log = ''.join(traceback.format_exception(e))
+        logger.error(traceback_log)
+        return {
+            'success': False,
+            'error': e,
+            'traceback': traceback_log
+        }
 
 # TODO: clear previous prompts

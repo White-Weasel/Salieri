@@ -1,6 +1,7 @@
 import logging
 import queue
 import threading
+import traceback
 import uuid
 from qdrant_client import QdrantClient
 from qdrant_client.http import models, exceptions
@@ -50,6 +51,15 @@ class LongTermMemory:
                     }
                 )
             ]
+        )
+
+    def clear_memory(self):
+        self.client.delete_collection(collection_name=self.collection_name)
+        self.client.recreate_collection(
+            collection_name=self.collection_name,
+            vectors_config={
+                "embedded_vector": models.VectorParams(size=1536, distance=models.Distance.DOT),
+            }
         )
 
 

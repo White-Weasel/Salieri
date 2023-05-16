@@ -7,6 +7,7 @@ import os
 import threading
 import time
 import numpy as np
+import speech_recognition
 import speech_recognition as sr
 import torch
 import whisper
@@ -14,14 +15,12 @@ from queue import Queue
 from sys import platform
 import logging
 
-
 # ---- speech_recognition params ----
 # How real time the recording is in seconds. The default from example is 2, maybe a bigger value like 12-20 is better?
 # PHRASE_LENGTH_LIMIT = 2
 # PHRASE_LENGTH_LIMIT = None
 PHRASE_LENGTH_LIMIT = None
 # How much empty space between recordings before we consider it a new line in the transcription (seconds)
-# TODO: higher time out for conversation, maybe 2.5 to 3 seconds?
 PHRASE_TIMEOUT = 1
 # Energy level for mic to detect
 ENERGY_THRESHOLD = 300
@@ -32,6 +31,48 @@ INPUT_DEVICE = 'pulse'
 MODEL = 'tiny.en'
 logger = logging.getLogger(__name__)
 logger.level = logging.DEBUG
+
+
+# # MONKEY PATCH
+# def listen_in_background(self, source, callback, phrase_time_limit=None):
+#     """
+#     Spawns a thread to repeatedly record phrases from ``source`` (an ``AudioSource`` instance) into an ``AudioData`` instance and call ``callback`` with that ``AudioData`` instance as soon as each phrase are detected.
+#
+#     Returns a function object that, when called, requests that the background listener thread stop. The background thread is a daemon and will not stop the program from exiting if there are no other non-daemon threads. The function accepts one parameter, ``wait_for_stop``: if truthy, the function will wait for the background listener to stop before returning, otherwise it will return immediately and the background listener thread might still be running for a second or two afterwards. Additionally, if you are using a truthy value for ``wait_for_stop``, you must call the function from the same thread you originally called ``listen_in_background`` from.
+#
+#     Phrase recognition uses the exact same mechanism as ``recognizer_instance.listen(source)``. The ``phrase_time_limit`` parameter works in the same way as the ``phrase_time_limit`` parameter for ``recognizer_instance.listen(source)``, as well.
+#
+#     The ``callback`` parameter is a function that should accept two parameters - the ``recognizer_instance``, and an ``AudioData`` instance representing the captured audio. Note that ``callback`` function will be called from a non-main thread.
+#     """
+#     assert isinstance(source, speech_recognition.AudioSource), "Source must be an audio source"
+#     running = [True]
+#
+#     def threaded_listen():
+#         # FIXME: Segment fault at the with statement
+#         with source as s:
+#             while running[0]:
+#                 try:  # listen for 1 second, then check again if the stop function has been called
+#                     audio = self.listen(s, PHRASE_TIMEOUT, phrase_time_limit)
+#                     audio.end_time_stamp = time.perf_counter() - PHRASE_TIMEOUT
+#                 except speech_recognition.WaitTimeoutError:  # listening timed out, just try again
+#                     pass
+#                 else:
+#                     if running[0]:
+#                         callback(self, audio)
+#                     time.sleep(0.1)
+#
+#     def stopper(wait_for_stop=True):
+#         running[0] = False
+#         if wait_for_stop:
+#             listener_thread.join()  # block until the background thread is done, which can take around 1 second
+#
+#     listener_thread = threading.Thread(target=threaded_listen)
+#     listener_thread.daemon = True
+#     listener_thread.start()
+#     return stopper
+#
+#
+# speech_recognition.Recognizer.listen_in_background = listen_in_background
 
 
 def get_microphone():
@@ -111,24 +152,26 @@ class Ears:
 
     # noinspection PyAttributeOutsideInit
     def listen(self):
-        """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
+        """Start listening. Create 2 thread, 1 to get phrase and another to transcribe it"""
         assert self._stop_lock
         recorder = sr.Recognizer()
         if not self.input_device:
             self.input_device = get_microphone()
-        with self.input_device:
-            recorder.adjust_for_ambient_noise(self.input_device)
+        with self.input_device as source:
+            recorder.adjust_for_ambient_noise(source)
         recorder.dynamic_energy_threshold = True
         # recorder.dynamic_energy_threshold = False
         recorder.energy_threshold = ENERGY_THRESHOLD
         # recorder.pause_threshold = PHRASE_TIMEOUT
         # TODO: bandage fix, need to find out later what should we wait for.
-        time.sleep(5)
+        # time.sleep(5)
         self.stop_recording_func = recorder.listen_in_background(self.input_device, self.record_callback,
                                                                  phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
         self._stop_lock = False
-        threading.Thread(target=self.thread_target).start()
+        transcribe_thread = threading.Thread(target=self.thread_target)
+        transcribe_thread.daemon = True
+        transcribe_thread.start()
 
     def record_callback(self, _, audio: sr.AudioData) -> None:
         """
@@ -136,7 +179,7 @@ class Ears:
         audio: An AudioData containing the recorded bytes.
         """
         # Grab the raw bytes and push it into the thread safe queue.
-        audio.end_time_stamp = time.perf_counter()
+        # audio.end_time_stamp = time.perf_counter()
         self.phrase_audio_queue.put(audio)
         logger.debug("phrase end")
         # result = self.recorder.recognize_whisper_api(audio,
@@ -145,7 +188,9 @@ class Ears:
         # self.conversation_queue.put(text)
 
     def thread_target(self):
+        """ Run on another thread, constantly listening to the input device. Call stop() to stop this thread"""
         conversation = []
+        self.phrase_audio_queue = Queue()
         while not self._stop_lock:
             if not self.phrase_audio_queue.empty():
                 phrase_audio = self.phrase_audio_queue.get()
