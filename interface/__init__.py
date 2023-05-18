@@ -97,5 +97,3 @@ async def clear_memory():
             'error': e,
             'traceback': traceback_log
         }
-
-# TODO: clear previous prompts

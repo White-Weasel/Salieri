@@ -105,6 +105,7 @@ class Ears:
         self.phrase_audio_queue = Queue()
 
         self._stop_lock = True
+        self.transcribe_thread = None
 
     @property
     def is_listening(self):
@@ -132,9 +133,9 @@ class Ears:
                                                                  phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
         self._stop_lock = False
-        transcribe_thread = threading.Thread(target=self.thread_target)
-        transcribe_thread.daemon = True
-        transcribe_thread.start()
+        self.transcribe_thread = threading.Thread(target=self.thread_target)
+        self.transcribe_thread.daemon = True
+        self.transcribe_thread.start()
 
     def record_callback(self, _, audio: sr.AudioData) -> None:
         """
@@ -186,6 +187,8 @@ class Ears:
 
     def stop(self):
         self._stop_lock = True
+        if self.transcribe_thread:
+            self.transcribe_thread.join()
         self.stop_recording_func()
 
 

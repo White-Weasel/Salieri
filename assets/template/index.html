@@ -18,8 +18,7 @@
             type: "GET",
             url: "http://127.0.0.1:3000/status",
             success: function (response) {
-                var data = response
-                if (data['sleeping']) {
+                if (response['sleeping']) {
                     document.getElementById('message').innerHTML = "Salie is sleeping"
                     $('#sleep-btn').prop('disabled', true);
                     $('#wake-up-btn').prop('disabled', false);
@@ -50,8 +49,7 @@
             //     $("#loaderDiv").show();
             // },
             success: function (response) {
-                var data = response
-                if (data['success']) {
+                if (response['success']) {
                     document.getElementById('message').innerHTML = "Salie woke up"
                     $('#sleep-btn').prop('disabled', false);
                     $('#wake-up-btn').prop('disabled', true);
@@ -74,8 +72,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                var data = response
-                if (data['success']) {
+                if (response['success']) {
                     document.getElementById('message').innerHTML = "Salie is sleeping"
                     $('#sleep-btn').prop('disabled', true);
                     $('#wake-up-btn').prop('disabled', false);
@@ -101,15 +98,13 @@
             //     $("#loaderDiv").show();
             // },
             success: function (response) {
-                var data = response
-                if (data['success']) {
+                if (response['success']) {
                     document.getElementById('message').innerHTML = "Long term memory cleared"
                     $('#clear-memory-btn').prop('disabled', true);
-                }
-                else {
-                    console.log(data['error'])
-                    console.log(data['traceback'])
-                    document.getElementById('message').innerHTML = data['traceback']
+                } else {
+                    console.log(response['error'])
+                    console.log(response['traceback'])
+                    document.getElementById('message').innerHTML = response['traceback']
                 }
             }, error:
                 function (error) {
