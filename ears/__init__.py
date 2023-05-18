@@ -7,7 +7,6 @@ import os
 import threading
 import time
 import numpy as np
-import speech_recognition
 import speech_recognition as sr
 import torch
 import whisper
@@ -31,48 +30,6 @@ INPUT_DEVICE = 'pulse'
 MODEL = 'tiny.en'
 logger = logging.getLogger(__name__)
 logger.level = logging.DEBUG
-
-
-# # MONKEY PATCH
-# def listen_in_background(self, source, callback, phrase_time_limit=None):
-#     """
-#     Spawns a thread to repeatedly record phrases from ``source`` (an ``AudioSource`` instance) into an ``AudioData`` instance and call ``callback`` with that ``AudioData`` instance as soon as each phrase are detected.
-#
-#     Returns a function object that, when called, requests that the background listener thread stop. The background thread is a daemon and will not stop the program from exiting if there are no other non-daemon threads. The function accepts one parameter, ``wait_for_stop``: if truthy, the function will wait for the background listener to stop before returning, otherwise it will return immediately and the background listener thread might still be running for a second or two afterwards. Additionally, if you are using a truthy value for ``wait_for_stop``, you must call the function from the same thread you originally called ``listen_in_background`` from.
-#
-#     Phrase recognition uses the exact same mechanism as ``recognizer_instance.listen(source)``. The ``phrase_time_limit`` parameter works in the same way as the ``phrase_time_limit`` parameter for ``recognizer_instance.listen(source)``, as well.
-#
-#     The ``callback`` parameter is a function that should accept two parameters - the ``recognizer_instance``, and an ``AudioData`` instance representing the captured audio. Note that ``callback`` function will be called from a non-main thread.
-#     """
-#     assert isinstance(source, speech_recognition.AudioSource), "Source must be an audio source"
-#     running = [True]
-#
-#     def threaded_listen():
-#         # FIXME: Segment fault at the with statement
-#         with source as s:
-#             while running[0]:
-#                 try:  # listen for 1 second, then check again if the stop function has been called
-#                     audio = self.listen(s, PHRASE_TIMEOUT, phrase_time_limit)
-#                     audio.end_time_stamp = time.perf_counter() - PHRASE_TIMEOUT
-#                 except speech_recognition.WaitTimeoutError:  # listening timed out, just try again
-#                     pass
-#                 else:
-#                     if running[0]:
-#                         callback(self, audio)
-#                     time.sleep(0.1)
-#
-#     def stopper(wait_for_stop=True):
-#         running[0] = False
-#         if wait_for_stop:
-#             listener_thread.join()  # block until the background thread is done, which can take around 1 second
-#
-#     listener_thread = threading.Thread(target=threaded_listen)
-#     listener_thread.daemon = True
-#     listener_thread.start()
-#     return stopper
-#
-#
-# speech_recognition.Recognizer.listen_in_background = listen_in_background
 
 
 def get_microphone():
@@ -117,19 +74,22 @@ def main():
 
     ter_func = recorder.listen_in_background(source, record_callback, phrase_time_limit=PHRASE_LENGTH_LIMIT)
     while True:
-        if not audio_queue.empty():
-            phrase_audio = audio_queue.get()
-            phrase_end_time_stamp = phrase_audio.end_time_stamp
-            phrase_audio = np.frombuffer(phrase_audio.frame_data, np.int16).flatten().astype(np.float32) / 32768.0
-            result = audio_model.transcribe(phrase_audio, fp16=torch.cuda.is_available())
-            e_time = time.perf_counter()
-            text = result['text'].strip()
-            conversation.append(text)
-            os.system('cls' if os.name == 'nt' else 'clear')
-            for line in conversation:
-                print(line)
-            # Flush stdout.
-            print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
+        try:
+            if not audio_queue.empty():
+                phrase_audio = audio_queue.get()
+                phrase_end_time_stamp = phrase_audio.end_time_stamp
+                phrase_audio = np.frombuffer(phrase_audio.frame_data, np.int16).flatten().astype(np.float32) / 32768.0
+                result = audio_model.transcribe(phrase_audio, fp16=torch.cuda.is_available())
+                e_time = time.perf_counter()
+                text = result['text'].strip()
+                conversation.append(text)
+                os.system('cls' if os.name == 'nt' else 'clear')
+                for line in conversation:
+                    print(line)
+                # Flush stdout.
+                print(f"--- real-time diff: {e_time - phrase_end_time_stamp} seconds ---", end='', flush=True)
+        except KeyboardInterrupt:
+            ter_func()
 
 
 class Ears:
@@ -152,20 +112,23 @@ class Ears:
 
     # noinspection PyAttributeOutsideInit
     def listen(self):
-        """Start listening. Create 2 thread, 1 to get phrase and another to transcribe it"""
+        """Start listening. Create 2 thread, 1 to get phrase audio and another to transcribe it"""
         assert self._stop_lock
         recorder = sr.Recognizer()
         if not self.input_device:
-            self.input_device = get_microphone()
-        with self.input_device as source:
+            device = get_microphone()
+            self.input_device = device
+        else:
+            device = self.input_device
+        with device as source:
             recorder.adjust_for_ambient_noise(source)
         recorder.dynamic_energy_threshold = True
         # recorder.dynamic_energy_threshold = False
         recorder.energy_threshold = ENERGY_THRESHOLD
         # recorder.pause_threshold = PHRASE_TIMEOUT
         # TODO: bandage fix, need to find out later what should we wait for.
-        # time.sleep(5)
-        self.stop_recording_func = recorder.listen_in_background(self.input_device, self.record_callback,
+        time.sleep(5)
+        self.stop_recording_func = recorder.listen_in_background(device, self.record_callback,
                                                                  phrase_time_limit=PHRASE_LENGTH_LIMIT)
         logger.debug("Ears is listening")
         self._stop_lock = False
@@ -183,7 +146,7 @@ class Ears:
         self.phrase_audio_queue.put(audio)
         logger.debug("phrase end")
         # result = self.recorder.recognize_whisper_api(audio,
-        #                                              api_key='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')
+        #                                              api_key='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') # noqa
         # text = result.strip()
         # self.conversation_queue.put(text)
 

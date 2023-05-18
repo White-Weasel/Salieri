@@ -1,9 +1,9 @@
 # import brain
 import interface
 import uvicorn
-# import faulthandler
-#
-# faulthandler.enable()
+import faulthandler
+
+faulthandler.enable()
 
 app = interface.app
 
