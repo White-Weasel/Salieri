@@ -1,12 +1,11 @@
 fastapi
 uvicorn
 transformers[torch]
-pyngrok
-nest-asyncio
 
+# pyaudio need to be installed by apt on Debian.
+# sudo apt-get install portaudio19-dev python-all-dev python3-all-dev && sudo pip3 install pyaudio
 pyaudio
 openai
 openai-whisper
 SpeechRecognition
---extra-index-url https://download.pytorch.org/whl/cu116
-torch
+qdrant-client
