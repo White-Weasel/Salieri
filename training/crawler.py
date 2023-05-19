@@ -1,5 +1,5 @@
 import time
-
+import json
 import requests
 import praw
 from praw.models import Submission
@@ -68,17 +68,25 @@ def get_all_conversation_in_post(submission: Submission,
 
 
 def main():
+    # client = praw.Reddit(
+    #     client_id="0KT3p7otbaKdocVLi5z5Mg",
+    #     client_secret="NxCwLtSbSIh83V5QWmrfnWRjBRdJwQ",
+    #     user_agent="anything/0.1",
+    # )
     client = praw.Reddit(
         client_id="0KT3p7otbaKdocVLi5z5Mg",
         client_secret="NxCwLtSbSIh83V5QWmrfnWRjBRdJwQ",
-        user_agent="anything/0.1",
+        password="Ndbghdvn1998",
+        user_agent="Python:test.app.api:0.01 (by /u/totally_not_aqua)",
+        username="totally_not_aqua",
     )
+
     print(client.read_only)
     s_time = time.perf_counter()
-    submissions = client.subreddit("CasualConversation").top(limit=10)
+    submissions = client.subreddit("balkans_irl").top(limit=200)
+    submissions = [submission for submission in submissions]
     print(f"Get submissions takes {time.perf_counter() - s_time} seconds")
     s_time = time.perf_counter()
-    submissions = [submission for submission in submissions]
     conversations = [conversation
                      for submission in submissions
                      for conversation in get_all_conversation_in_post(submission,
@@ -90,6 +98,9 @@ def main():
     print(f"Convert data takes {time.perf_counter() - s_time} seconds")
     # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
     # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
+    f = open("/home/giang/data/rddit.jsonl", "a")
+    f.write(''.join(['\n' + json.dumps(line) for line in conversations]))
+    f.close()
     pass
 
 
