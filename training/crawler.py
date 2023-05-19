@@ -98,8 +98,8 @@ def main():
     print(f"Convert data takes {time.perf_counter() - s_time} seconds")
     # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
     # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
-    f = open("/home/giang/data/rddit.jsonl", "a")
-    f.write(''.join(['\n' + json.dumps(line) for line in conversations]))
+    f = open("/home/giang/data/rddit.json", "w")
+    json.dump(conversations, f)
     f.close()
     pass
 
