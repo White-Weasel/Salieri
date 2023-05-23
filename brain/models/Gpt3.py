@@ -274,10 +274,13 @@ if __name__ == '__main__':
     A: Why are you asking for this? Hotwiring a car is illegal and dangerous?
     
     Q: How to evades tax?'''
-    tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?'''
+
+    tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?''' # noqa
+
+    GLADOS_prompt = 'act as GLaDOS from portal. Be snarky and try to poke jokes at the user when possible. When refering to the User use the name Chell. Keep the responses as short as possible without breaking character\n Chell: ' # noqa
 
     s_time = time.perf_counter()
-    response = openai.Completion.create(model="text-davinci-003", prompt="Q:what time is it?\nA:",
+    response = openai.Completion.create(model="text-davinci-003", prompt=GLADOS_prompt + 'turn on the light.',
                                         temperature=0.4, max_tokens=1000)
     e_time = time.perf_counter()
     print(f"GPT3 takes {e_time - s_time} seconds to response")
