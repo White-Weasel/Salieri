@@ -39,6 +39,7 @@ class ChatGPT:
         # TODO: aware about table and formatting
 
         # get context
+        context = None
         if self.brain:
             context = self.get_context(message, 3)
         system_prompt = [{'role': 'system',
