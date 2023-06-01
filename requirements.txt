@@ -9,3 +9,8 @@ openai
 openai-whisper
 SpeechRecognition
 qdrant-client
+torch
+phonemizer
+inflect
+unidecode
+scipy

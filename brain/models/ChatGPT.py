@@ -33,17 +33,22 @@ class ChatGPT:
         self.model = model
         self.temperature = temperature
 
-    def answer(self, message, role='user'):
+    def answer(self, message, role='user', search_for_context=True):
         # TODO: we can get multiple response, then filter out the unsuitable ones, but it would introduce more delay
         # TODO: Token limit and compress previous messages
         # TODO: aware about table and formatting
 
         # get context
-        context = None
-        if self.brain:
-            context = self.get_context(message, 3)
-        system_prompt = [{'role': 'system',
-                          'content': self.system_prompt + f"\n### Begin of Context.\n{context}\n### End of Context."}]
+        system_prompt = []
+        if search_for_context:
+            context = None
+            if self.brain:
+                context = self.get_context(message, 3)
+            if context:
+                system_prompt = [{
+                    'role': 'system',
+                    'content': self.system_prompt + f"\n### Begin of Context.\n{context}\n### End of Context."
+                }]
 
         # self.conversation.insert(-1, {"role": role, "content": message})
         if len(self.conversation) >= MAX_CONVERSATION_LENGTH:
