@@ -2,6 +2,7 @@ import logging
 import threading
 from queue import Queue
 from ears import Ears
+from mouth import Mouth
 from utls import StopableThread
 from .LanguageProcessor import LanguageProcessor
 from .models import ChatGPT, Gpt3, CustomGpt3
@@ -14,7 +15,7 @@ class Brain(StopableThread):
     __instance = None
 
     def __init__(self, audio_input=None, stt_model=None, diarization=False,
-                 audio_output=None, tts_model=None,
+                 audio_output_device=None, tts_model=None,
                  conversation=None, llm_model=CustomGpt3,
                  *args, **kwargs):
         super().__init__()
@@ -29,6 +30,7 @@ class Brain(StopableThread):
         self.languageProcessor = LanguageProcessor(self, model=llm_model, initial_conversation=conversation)
 
         self.ears = Ears(self, input_device=audio_input, audio_model=stt_model, diarization=diarization)
+        self.mouth = Mouth(audio_output_device, tts_model)
 
     @property
     def sleeping(self):

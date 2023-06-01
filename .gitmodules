@@ -1,0 +1,3 @@
+[submodule "mouth/GladosTTS"]
+	path = mouth/GladosTTS
+	url = git@github.com:White-Weasel/GladosTTS.git

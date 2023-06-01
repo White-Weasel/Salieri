@@ -16,21 +16,29 @@ class Gpt3:
         self.model = model
         self.api_key = os.getenv("OPENAI_API_KEY")
 
-    def answer(self, question, user=None, **kwargs):
+    def answer(self, question, user=None, search_for_context=True, **kwargs):
         if not user:
             user = 'User'
 
-        context = self.get_context(question, 3)
+        # get context
+        if search_for_context:
+            context = self.get_context(question, 3)
+            context = f"### START OF CONTEXT\n" \
+                      f"{context}\n" \
+                      f"### END OF CONTEXT"
+        else:
+            context = ''
+        # get the latest 3 conversations
         if len(self.conversation) > 10:
             self.conversation = self.conversation[2:]
+        # create the prompt
         self.conversation.append(f'{user}: {question}')
         conversation = '\n'.join([line for line in self.conversation])
         full_prompt = f"{self.prompt}\n" \
-                      f"### START OF CONTEXT\n" \
                       f"{context}\n" \
-                      f"### END OF CONTEXT\n" \
                       f"{conversation}\n" \
                       f"Marv:"
+        # get the answer
         answer = openai.Completion.create(model=self.model, prompt=full_prompt,
                                           temperature=0.5,
                                           max_tokens=256,
@@ -41,7 +49,7 @@ class Gpt3:
                                           # stop = ["#"]) # noqa
         answer = answer["choices"][0]["text"].strip()
         self.conversation.append(f'Marv: {answer}')
-
+        # save the conversation into short term memory
         self.brain.memory.put(f"{user}: {question}\nMarv: {answer}")
         return answer
 
