@@ -20,6 +20,7 @@ def tree_to_list_recursion(root,
                            min_score: int = 0,
                            max_depth: int = None,
                            __depth: int = 1):
+    # TODO: remove mod messages
     reps = [c for c in root.replies]
     root_body = f"/u/{root.author.name}: {root.body}"
     reps = [rep for rep in reps if rep.score > min_score and rep.author]
@@ -50,9 +51,9 @@ def get_all_conversation_in_post(submission: Submission,
     :param min_replies: min length of the comment chain
     :return:
     """
-    s_time = time.perf_counter()
+    # s_time = time.perf_counter()
     submission.comments.replace_more(limit=replace_limit)
-    print(f"replace_more takes {time.perf_counter() - s_time} seconds")
+    # print(f"replace_more takes {time.perf_counter() - s_time} seconds")
     # comment_list = [i for i in submission.comments
     #                 if not isinstance(i, praw.models.reddit.more.MoreComments) and i.author]
     comment_list = [i for i in submission.comments if i.author]
@@ -84,26 +85,40 @@ def main():
     print(client.read_only)
     s_time = time.perf_counter()
     subreddits = ["balkans_irl", "noncredibledefense", "greentext", "CasualConversation"]
-    conversations = []
-    for sub in subreddits:
-        submissions = client.subreddit(sub).top(limit=200)
-        submissions = [submission for submission in submissions]
-        print(f"Get submissions takes {time.perf_counter() - s_time} seconds")
-        s_time = time.perf_counter()
-        conversations += [conversation
-                          for submission in submissions
-                          for conversation in get_all_conversation_in_post(submission,
-                                                                           limit_to_top=3,
-                                                                           min_score=10,
-                                                                           min_replies=3,
-                                                                           max_depth=None)
-                          ]
-    print(f"Convert data takes {time.perf_counter() - s_time} seconds")
-    # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
-    # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
-    f = open("/home/giang/data/rddit.json", "w")
-    json.dump(conversations, f)
-    f.close()
+    conversations = {}
+    try:
+        for sub in subreddits:
+            conversations[sub] = []
+            submissions = client.subreddit(sub).top(limit=400)
+            submissions = [submission for submission in submissions]
+            print(f"Get {len(submissions)} submissions from /r/{sub}")
+            s_time = time.perf_counter()
+            for index, submission in enumerate(submissions):
+                print(f"fetching submission {index + 1}/{len(submissions)} from {sub}")
+                conversations[sub] += get_all_conversation_in_post(submission,
+                                                                   replace_limit=5,
+                                                                   limit_to_top=False,
+                                                                   min_score=10,
+                                                                   min_replies=False,
+                                                                   max_depth=None)
+            # conversations += [conversation
+            #                   for submission in submissions
+            #                   for conversation in get_all_conversation_in_post(submission,
+            #                                                                    replace_limit=3,
+            #                                                                    limit_to_top=False,
+            #                                                                    min_score=10,
+            #                                                                    min_replies=False,
+            #                                                                    max_depth=None)
+            #                   ]
+    except KeyboardInterrupt:
+        print("Saving...")
+    finally:
+        print(f"Convert data takes {time.perf_counter() - s_time} seconds")
+        # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
+        # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
+        f = open("/home/giang/data/rddit.json", "w")
+        json.dump(conversations, f)
+        f.close()
     pass
 
 
