@@ -83,18 +83,21 @@ def main():
 
     print(client.read_only)
     s_time = time.perf_counter()
-    submissions = client.subreddit("balkans_irl").top(limit=200)
-    submissions = [submission for submission in submissions]
-    print(f"Get submissions takes {time.perf_counter() - s_time} seconds")
-    s_time = time.perf_counter()
-    conversations = [conversation
-                     for submission in submissions
-                     for conversation in get_all_conversation_in_post(submission,
-                                                                      # limit_to_top=4,
-                                                                      min_score=10,
-                                                                      min_replies=3,
-                                                                      max_depth=None)
-                     ]
+    subreddits = ["balkans_irl", "noncredibledefense", "greentext", "CasualConversation"]
+    conversations = []
+    for sub in subreddits:
+        submissions = client.subreddit(sub).top(limit=200)
+        submissions = [submission for submission in submissions]
+        print(f"Get submissions takes {time.perf_counter() - s_time} seconds")
+        s_time = time.perf_counter()
+        conversations += [conversation
+                          for submission in submissions
+                          for conversation in get_all_conversation_in_post(submission,
+                                                                           limit_to_top=3,
+                                                                           min_score=10,
+                                                                           min_replies=3,
+                                                                           max_depth=None)
+                          ]
     print(f"Convert data takes {time.perf_counter() - s_time} seconds")
     # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
     # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
