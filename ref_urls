@@ -43,6 +43,7 @@ https://learnprompting.org/docs/prompt_hacking/jailbreaking
 https://www.kaggle.com/datasets/l3dasteam/l3das22
 https://www.kaggle.com/datasets/jef1056/discord-data
 https://www.kaggle.com/datasets/jerryqu/reddit-conversations
+https://paperswithcode.com/dataset/wsc
 # steins;gate transcript
 https://lparchive.org/SteinsGate/
 
@@ -71,3 +72,7 @@ https://huggingface.co/hollowstrawberry/stable-diffusion-guide
 
 # simpler bot
 https://github.com/Picovoice/rhino
+
+# other LLM
+https://huggingface.co/AlekseyKorshuk/vicuna-7b
+https://huggingface.co/tiiuae/falcon-7b
