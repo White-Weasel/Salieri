@@ -19,9 +19,16 @@ def tree_to_list_recursion(root,
                            limit_to_top: int = None,
                            min_score: int = 0,
                            max_depth: int = None,
+                           get_mod_comment=False,
                            __depth: int = 1):
-    # TODO: remove mod messages
-    reps = [c for c in root.replies]
+    reps = [c for c in root.replies
+            if c.author  # deleted
+            and (hasattr(c.author, 'is_mod')
+                 and ((get_mod_comment and c.author.is_mod) or (not get_mod_comment and not c.author.is_mod))
+                 )  # mod
+            and c.body != '[removed]'  # removed
+            and c.body != '[deleted]'  # removed
+            ]
     root_body = f"/u/{root.author.name}: {root.body}"
     reps = [rep for rep in reps if rep.score > min_score and rep.author]
     if not reps or (max_depth and __depth >= max_depth):
@@ -30,7 +37,8 @@ def tree_to_list_recursion(root,
         reps = sorted(reps, key=lambda rep: rep.score, reverse=True)[:limit_to_top]
     result = [[root_body] + c
               for rep in reps
-              for c in tree_to_list_recursion(rep, limit_to_top=limit_to_top, max_depth=max_depth, __depth=__depth + 1)]
+              for c in tree_to_list_recursion(rep, limit_to_top=limit_to_top, max_depth=max_depth,
+                                              get_mod_comment=get_mod_comment, __depth=__depth + 1)]
     return result
 
 
@@ -52,6 +60,9 @@ def get_all_conversation_in_post(submission: Submission,
     :return:
     """
     # s_time = time.perf_counter()
+    if limit_to_top:
+        submission.comment_sort = "top"
+        submission.comment_limit = limit_to_top
     submission.comments.replace_more(limit=replace_limit)
     # print(f"replace_more takes {time.perf_counter() - s_time} seconds")
     # comment_list = [i for i in submission.comments
@@ -84,23 +95,25 @@ def main():
 
     print(client.read_only)
     s_time = time.perf_counter()
-    subreddits = ["balkans_irl", "noncredibledefense", "greentext", "CasualConversation"]
+    subreddits = ["4chan"]
     conversations = {}
     try:
         for sub in subreddits:
             conversations[sub] = []
-            submissions = client.subreddit(sub).top(limit=400)
+            submissions = client.subreddit(sub).top(limit=1000)
             submissions = [submission for submission in submissions]
             print(f"Get {len(submissions)} submissions from /r/{sub}")
-            s_time = time.perf_counter()
             for index, submission in enumerate(submissions):
-                print(f"fetching submission {index + 1}/{len(submissions)} from {sub}")
+                s_time = time.perf_counter()
                 conversations[sub] += get_all_conversation_in_post(submission,
                                                                    replace_limit=5,
-                                                                   limit_to_top=False,
+                                                                   limit_to_top=100,
                                                                    min_score=10,
-                                                                   min_replies=False,
+                                                                   min_replies=3,
                                                                    max_depth=None)
+                print(f"fetching submission {index + 1}/{len(submissions)} from {sub} "
+                      f"takes {time.perf_counter() - s_time} seconds")
+
             # conversations += [conversation
             #                   for submission in submissions
             #                   for conversation in get_all_conversation_in_post(submission,
@@ -113,7 +126,6 @@ def main():
     except KeyboardInterrupt:
         print("Saving...")
     finally:
-        print(f"Convert data takes {time.perf_counter() - s_time} seconds")
         # short_conversations = tuple(set(tuple(con[:4]) for con in conversations if len(con) >= 3))
         # short_conversations = get_all_conversation_in_post(submissions[3], limit_to_top=3)
         f = open("/home/giang/data/rddit.json", "w")
