@@ -15,7 +15,7 @@ TEXT_END_TOKEN = r"<|endoftext|>"
 # n = [conver for conver in n if len(conver) > 1]
 # emoji_list = emoji.unicode_codes.EMOJI_DATA
 # n = [conver for conver in n if not any(emoji in line for line in conver for emoji in emoji_list)]
-f = open("/home/giang/data/rd_dataset/casual_conversation-cleaned.jsonl", 'r')
+f = open("/home/giang/data/rd_dataset/casual_conversation-no_emoji.jsonl", 'r')
 a = [json.loads(line) for line in f.readlines()]
 f.close()
 filter_words = ['/r/', 'r/', '\\r\\', 'r\\',
@@ -103,5 +103,5 @@ for conver in all_conversations[:500]:
     ds['input'].append(input_)
     ds['output'].append(output_)
 dataset = Dataset.from_dict(ds)
-dataset.push_to_hub("binhgiangnguyendanh/reddit_casual_conversation_for_alpaca_lora-TEST", private=True)
+dataset.push_to_hub("binhgiangnguyendanh/reddit_casual_conversation_for_alpaca_lora", private=True)
 pass
