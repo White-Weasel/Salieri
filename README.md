@@ -1,6 +1,7 @@
 - Requirements:
-  - A microphone.
   - Python version >= 3.10
+  - Qdrant vector database.
+  - A microphone.
   - A little bit of patience.
 - Install:
   - Run `pip3 install -r requirements.txt` to install dependencies.

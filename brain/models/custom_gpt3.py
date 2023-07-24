@@ -22,16 +22,22 @@ class CustomGpt3:
         self.completion_end_token = completion_end_token
         self.api_key = os.getenv("OPENAI_API_KEY")
 
-    def answer(self, question, user=None, **kwargs):
+    def answer(self, question, user=None, search_for_context=True, **kwargs):
         if not user:
             user = 'User'
 
-        context = self.get_context(question, 3)
+        # get context
+        context = ''
+        if search_for_context:
+            context = self.get_context(question, 3)
+        # get the last 3 messages
         if len(self.conversation) > 10:
             self.conversation = self.conversation[2:]
+        # create and format the prompt
         self.conversation.append(f'{user}: {question}')
         conversation = '\n'.join(['@' + line for line in self.conversation])
         full_prompt = f"{context}\n{conversation}\n@Salie:{self.prompt_end_token}"
+        # generate answer
         answer = openai.Completion.create(model=self.model,
                                           prompt=full_prompt,
                                           temperature=0.7,
@@ -43,6 +49,7 @@ class CustomGpt3:
         answer = answer["choices"][0]["text"].strip()
         self.conversation.append(f'Salieri: {answer}')
 
+        # save the conversation into short term memory
         if self.brain:
             self.brain.memory.put(f"{user}: {question}\nSalieri: {answer}")
         return answer

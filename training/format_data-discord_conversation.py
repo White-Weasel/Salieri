@@ -35,7 +35,7 @@ training_data = [
         'completion': f" {':'.join(message[-1].split(':')[1:])}{COMPLETION_END}",
     }
     for message in user_messages]
-# remove data with mentions. If we are making a discord bot then this will not be needed
+# remove messages with mentions. If we are making a discord bot then this will not be needed
 training_data = [line for line in training_data if '@' not in line['prompt'] and '@' not in line['completion']]
 
 training_data_length = int(input("Training data length: "))

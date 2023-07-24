@@ -13,8 +13,9 @@ class LanguageProcessor:
         self.initial_conversation = initial_conversation
         self.model = model(brain, initial_prompt=initial_conversation, *args, **kwargs)
 
-    def answer(self, message, user="User"):
-        answer = self.model.answer(message, user)
+    def answer(self, message, user="User", search_for_context=True):
+        # TODO: test search_for_context
+        answer = self.model.answer(message, user, search_for_context=search_for_context)
         logger.debug(f"Brain answer: {answer}")
         self.conversation = self.model.conversation
         return answer
