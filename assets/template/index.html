@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Salie Control Panel</title>
+</head>
+<body>
+<h3 id="message"></h3>
+<button id="wake-up-btn">Wake up</button>
+<button id="sleep-btn">Sleep</button>
+<button id="clear-memory-btn" style="background-color: red; color: white">Clear memory</button>
+<form></form>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:3000/status",
+            success: function (response) {
+                if (response['sleeping']) {
+                    document.getElementById('message').innerHTML = "Salie is sleeping"
+                    $('#sleep-btn').prop('disabled', true);
+                    $('#wake-up-btn').prop('disabled', false);
+                } else {
+                    document.getElementById('message').innerHTML = "Salie woke up"
+                    $('#sleep-btn').prop('disabled', false);
+                    $('#wake-up-btn').prop('disabled', true);
+                }
+            }, error:
+                function (error) {
+                    console.log(error);
+                    document.getElementById('message').innerHTML = error
+                }
+
+        });
+        $('#sleep-btn').prop('disabled', true);
+        $('#wake-up-btn').prop('disabled', false);
+    });
+
+    $('#wake-up-btn').click(function (event) {
+        $('#wake-up-btn').prop('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:3000/wake_up",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            // beforeSend: function () {
+            //     $("#loaderDiv").show();
+            // },
+            success: function (response) {
+                if (response['success']) {
+                    document.getElementById('message').innerHTML = "Salie woke up"
+                    $('#sleep-btn').prop('disabled', false);
+                    $('#wake-up-btn').prop('disabled', true);
+                }
+            }, error:
+                function (error) {
+                    $('#wake-up-btn').prop('disabled', false);
+                    console.log(error);
+                    document.getElementById('message').innerHTML = error
+                }
+
+        });
+    });
+
+    $('#sleep-btn').click(function (event) {
+        $('#sleep-btn').prop('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:3000/sleep",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                if (response['success']) {
+                    document.getElementById('message').innerHTML = "Salie is sleeping"
+                    $('#sleep-btn').prop('disabled', true);
+                    $('#wake-up-btn').prop('disabled', false);
+                }
+            }, error:
+                function (error) {
+                    $('#sleep-btn').prop('disabled', false);
+                    console.log(error);
+                    document.getElementById('message').innerHTML = error
+                }
+
+        });
+    });
+
+    $('#clear-memory-btn').click(function (event) {
+        $('#clear-memory-btn').prop('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:3000/clear_memory",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            // beforeSend: function () {
+            //     $("#loaderDiv").show();
+            // },
+            success: function (response) {
+                if (response['success']) {
+                    document.getElementById('message').innerHTML = "Long term memory cleared"
+                    $('#clear-memory-btn').prop('disabled', true);
+                } else {
+                    console.log(response['error'])
+                    console.log(response['traceback'])
+                    document.getElementById('message').innerHTML = response['traceback']
+                }
+            }, error:
+                function (error) {
+                    console.log(error);
+                    document.getElementById('message').innerHTML = error
+                }
+
+        });
+    });
+
+</script>
+</body>
+</html>

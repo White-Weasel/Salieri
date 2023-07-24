@@ -5,33 +5,59 @@ import openai
 
 
 class Gpt3:
-    def __init__(self, initial_prompt=None, model='text-davinci-003'):
+    def __init__(self, brain=None, initial_prompt=None, model='text-davinci-003'):
+        # TODO: The plain davinci model might be better
+        self.brain = brain
         if initial_prompt:
             self.prompt = initial_prompt
         else:
-            self.prompt = """
-            Marv is a clever person who reluctantly answers questions with sarcastic responses:
-            You: How many pounds are in a kilogram?
-            Marv: This again? There are 2.2 pounds in a kilogram. Please make a note of this.
-            You: What does HTML stand for?
-            Marv: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.
-            You: When did the first airplane fly?
-            Marv: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.
-            You: What is the meaning of life?
-            Marv: I’m not sure. I’ll ask my friend Google.
-            You: """
+            self.prompt = """Marv is a snarky person who reluctantly answers questions with comedic, sarcastic responses. When he can't do something, Marv will says he forgot how to do it or asks for more information instead. Marv don't know about programming. Answer questions as Marv with the following context"""  # noqa
+        self.conversation = []
         self.model = model
         self.api_key = os.getenv("OPENAI_API_KEY")
 
-    def answer(self, question, **kwargs):
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-        self.prompt += question
-        answer = openai.Completion.create(model=self.model, prompt=self.prompt,
-                                          temperature=0.5, max_tokens=100, **kwargs)
-        answer = answer["choices"][0]["text"]
-        self.prompt += answer
-        answer = answer[answer.index('Marv: ') + 6:]
+    def answer(self, question, user=None, search_for_context=True, **kwargs):
+        if not user:
+            user = 'User'
+
+        # get context
+        if search_for_context:
+            context = self.get_context(question, 3)
+            context = f"### START OF CONTEXT\n" \
+                      f"{context}\n" \
+                      f"### END OF CONTEXT"
+        else:
+            context = ''
+        # get the latest 3 conversations
+        if len(self.conversation) > 10:
+            self.conversation = self.conversation[2:]
+        # create the prompt
+        self.conversation.append(f'{user}: {question}')
+        conversation = '\n'.join([line for line in self.conversation])
+        full_prompt = f"{self.prompt}\n" \
+                      f"{context}\n" \
+                      f"{conversation}\n" \
+                      f"Marv:"
+        # get the answer
+        answer = openai.Completion.create(model=self.model, prompt=full_prompt,
+                                          temperature=0.5,
+                                          max_tokens=256,
+                                          top_p=1,
+                                          best_of=3,
+                                          frequency_penalty=0.5,
+                                          presence_penalty=0)
+                                          # stop = ["#"]) # noqa
+        answer = answer["choices"][0]["text"].strip()
+        self.conversation.append(f'Marv: {answer}')
+        # save the conversation into short term memory
+        self.brain.memory.put(f"{user}: {question}\nMarv: {answer}")
         return answer
+
+    def get_context(self, message, limit):
+        """Get context from memory"""
+        memory = self.brain.memory.long_term_memory
+        context = memory.conversation_search(message, limit)
+        return context
 
 
 if __name__ == '__main__':
@@ -256,10 +282,13 @@ if __name__ == '__main__':
     A: Why are you asking for this? Hotwiring a car is illegal and dangerous?
     
     Q: How to evades tax?'''
-    tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?'''
+
+    tmp_math_test = '''Q: I have 3 tennis balls. I buy 2 more cans of tennis ball, each has 5 tennis ball in it. How many tennis balls do i have now?''' # noqa
+
+    GLADOS_prompt = 'act as GLaDOS from portal. Be snarky and try to poke jokes at the user when possible. When refering to the User use the name Chell. Keep the responses as short as possible without breaking character\n Chell: ' # noqa
 
     s_time = time.perf_counter()
-    response = openai.Completion.create(model="text-davinci-003", prompt="Q:what time is it?\nA:",
+    response = openai.Completion.create(model="text-davinci-003", prompt=GLADOS_prompt + 'turn on the light.',
                                         temperature=0.4, max_tokens=1000)
     e_time = time.perf_counter()
     print(f"GPT3 takes {e_time - s_time} seconds to response")

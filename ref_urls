@@ -13,6 +13,8 @@ https://docs.sunfounder.com/projects/pidog/en/latest/python/py_b11_sound_directi
 https://huggingface.co/pyannote/voice-activity-detection.
 https://huggingface.co/pyannote/segmentation
 https://github.com/m-bain/whisperX
+https://github.com/l3das/L3DAS22
+https://github.com/R2D2FISH/glados-tts
 
 # VAD
 https://github.com/snakers4/silero-vad
@@ -35,6 +37,47 @@ https://github.com/amazon-science/mm-cot
 
 # text prompts
 https://gist.github.com/coolaj86/6f4f7b30129b0251f61fa7baaa881516
+https://learnprompting.org/docs/prompt_hacking/jailbreaking
 
+# datasets
+https://www.kaggle.com/datasets/l3dasteam/l3das22
+https://www.kaggle.com/datasets/jef1056/discord-data
+https://www.kaggle.com/datasets/jerryqu/reddit-conversations
+https://paperswithcode.com/dataset/wsc
 # steins;gate transcript
 https://lparchive.org/SteinsGate/
+
+gpt4 x alpaca
+https://huggingface.co/chavinlo/gpt4-x-alpaca/discussions/3
+https://github.com/teknium1/alpaca-roleplay-discordbot
+
+# vector db
+https://qdrant.tech/documentation/collections/
+
+# training
+https://huggingface.co/docs/accelerate/usage_guides/big_modeling
+https://www.kaggle.com/code/ndbgof/notebook56b9ec4d07/edit
+
+https://github.com/aiortc/aiortc
+https://github.com/GetStream/webrtc-android
+https://github.com/Aspie96/gpt-4chan-model
+https://github.com/karpathy/nanoGPT
+
+# ml basics
+https://machinelearningmastery.com/crash-course-recurrent-neural-networks-deep-learning/
+http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+https://blog.floydhub.com/long-short-term-memory-from-zero-to-hero-with-pytorch/
+
+# stable diffusion
+https://huggingface.co/hollowstrawberry/stable-diffusion-guide
+
+# simpler bot
+https://github.com/Picovoice/rhino
+
+# other LLM
+https://huggingface.co/AlekseyKorshuk/vicuna-7b
+https://huggingface.co/tiiuae/falcon-7b
+https://github.com/tloen/alpaca-lora
+https://gist.github.com/cedrickchee/255f121a991e75d271035d8a659ae44d
+https://github.com/oobabooga/text-generation-webui
+https://github.com/ggerganov/ggml

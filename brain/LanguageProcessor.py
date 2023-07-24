@@ -1,19 +1,21 @@
 # TODO: process the answer before showing it would reduce the response time.
 import logging
 from typing import Union, Type
-from .models import ChatGPT, Gpt3, GptJ6B
+from .models import ChatGPT, Gpt3, GptJ6B, CustomGpt3
 
 logger = logging.getLogger(__name__)
 
 
 class LanguageProcessor:
-    def __init__(self, model: Type[Union[ChatGPT, Gpt3, GptJ6B]], initial_prompt=None, *args, **kwargs):
+    def __init__(self, brain, model: Type[Union[ChatGPT, Gpt3, GptJ6B, CustomGpt3]], initial_conversation=None, *args, **kwargs):
+        self.brain = brain
         self.conversation = None
-        self.initial_prompt = initial_prompt
-        self.model = model(initial_prompt=initial_prompt, *args, **kwargs)
+        self.initial_conversation = initial_conversation
+        self.model = model(brain, initial_prompt=initial_conversation, *args, **kwargs)
 
-    def answer(self, message):
-        answer = self.model.answer(message)
+    def answer(self, message, user="User", search_for_context=True):
+        # TODO: test search_for_context
+        answer = self.model.answer(message, user, search_for_context=search_for_context)
         logger.debug(f"Brain answer: {answer}")
         self.conversation = self.model.conversation
         return answer

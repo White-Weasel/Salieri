@@ -1,0 +1,15 @@
+- Requirements:
+  - Python version >= 3.10
+  - Qdrant vector database.
+  - A microphone.
+  - A little bit of patience.
+- Install:
+  - Run `pip3 install -r requirements.txt` to install dependencies.
+  - Set the OPENAI_API_KEY environment variable
+- How to run:
+  - Run main.py, that's it! You can talk to Salie over the microphone or over API(currently disabled)
+- How it works:
+  - Salie use OpenAI Whisper for speech to text and ChatGPT to response.
+- TODO:
+  - Text to speech.
+  - A different language model (ChatGPT sucks at creating texts with personality).
