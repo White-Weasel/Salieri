@@ -239,7 +239,7 @@
             "Should I run away?",
             "But why an explosion? Terrorists?",
             "No, that doesn't fit.",
-            "I mean, how do you explain that\u2470!?"
+            "I mean, how do you explain that!?"
         ],
         "char": "Rintaro",
         "message": "What the..."
@@ -559,7 +559,7 @@
     },
     {
         "context": [
-            "What's with the attitude? She's obviously not staff, and there's no way that the\u2470 Makise Kurisu would be working with someone like Doctor Nakabachi.",
+            "What's with the attitude? She's obviously not staff, and there's no way that the Makise Kurisu would be working with someone like Doctor Nakabachi.",
             "Which means... no!"
         ],
         "char": "Rintaro",
@@ -987,7 +987,7 @@
             "I crouch down and turn the corner slowly, keeping my eyes and ears peeled for any sign of danger.",
             "And there, at the end of the passage, I see it.",
             "There's something on the ground.",
-            "No... someone\u2470.",
+            "No... someone.",
             "Motionless.",
             "Who is it?",
             "The clothes are familiar.",
@@ -1273,7 +1273,7 @@
     {
         "context": [],
         "char": "Itaru",
-        "message": "Stop calling me that! It's super hacker\u2470, duh."
+        "message": "Stop calling me that! It's super hacker, duh."
     },
     {
         "context": [],
@@ -1771,7 +1771,7 @@
             "The lab has no air conditioning. Ice cold drinks are essential."
         ],
         "char": "Rintaro",
-        "message": "Ah, elixir intellectualis\u2470, a drink fit for a genius!"
+        "message": "Ah, elixir intellectualis, a drink fit for a genius!"
     },
     {
         "context": [],
@@ -1819,7 +1819,7 @@
             "Sitting majestically on top of the table is a commercial-grade microwave oven. It's significantly larger than newer home models."
         ],
         "char": "Rintaro",
-        "message": "The plan, as in the plan\u2470. Obviously, I'm talking about perfecting Gadget No. 8."
+        "message": "The plan, as in the plan. Obviously, I'm talking about perfecting Gadget No. 8."
     },
     {
         "context": [],
@@ -1897,7 +1897,7 @@
             "A few days ago, however, we discovered that the PhoneWave (name subject to change) has a second, unintended capability.",
             "Our brave -- or possibly just ditzy -- Mayuri had made it her daily routine to heat some frozen fried chicken by remote control.",
             "Long story short, she was defrosting her beloved \"Juicy Chicken Number One!\" as usual when the unexpected happened.",
-            "The chicken came out more frozen than when she'd put it in. The microwave refroze\u2470 the chicken.",
+            "The chicken came out more frozen than when she'd put it in. The microwave refroze the chicken.",
             "Since then, Daru and I have been searching for the cause."
         ],
         "char": "Itaru",
@@ -2078,7 +2078,7 @@
             "It just gets more confusing each time."
         ],
         "char": "Rintaro",
-        "message": "Daru. You wouldn't mind eating\u2470 one of these, would you? Of course you wouldn't. It's for science! Your sacrifice will forever be remembered!"
+        "message": "Daru. You wouldn't mind eating one of these, would you? Of course you wouldn't. It's for science! Your sacrifice will forever be remembered!"
     },
     {
         "context": [],
@@ -2191,7 +2191,7 @@
             "...Oh."
         ],
         "char": "Itaru",
-        "message": "The problem is we don't know what it is\u2470 doing, or why it's doing it."
+        "message": "The problem is we don't know what it is doing, or why it's doing it."
     },
     {
         "context": [],
@@ -2284,7 +2284,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "What do you mean, ridiculous? My genius brain considers every\u2470 possibility, even those a lesser mind would say break the laws of nature. Don't you dare call that ridiculous."
+        "message": "What do you mean, ridiculous? My genius brain considers every possibility, even those a lesser mind would say break the laws of nature. Don't you dare call that ridiculous."
     },
     {
         "context": [],
@@ -2899,7 +2899,7 @@
     {
         "context": [
             "A string-shaped crevice?",
-            "That must be how they\u2470 enter our universe.",
+            "That must be how they enter our universe.",
             "But do cosmic strings really exist?"
         ],
         "char": "Kurisu",
@@ -3188,7 +3188,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "Something can\u2470 come from nothing."
+        "message": "Something can come from nothing."
     },
     {
         "context": [
@@ -3336,7 +3336,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Don't say another word! Any more and they\u2470 will come to silence you!"
+        "message": "Don't say another word! Any more and they will come to silence you!"
     },
     {
         "context": [],
@@ -3702,7 +3702,7 @@
     },
     {
         "context": [
-            "With a serious look on his face, Lukako grasps the oonusa\u2470 with both hands as if it were a sword.",
+            "With a serious look on his face, Lukako grasps the oonusa with both hands as if it were a sword.",
             "His stance is impressive. I've taught him well."
         ],
         "char": "Luka",
@@ -3739,7 +3739,7 @@
     },
     {
         "context": [
-            "He raises the oonusa\u2470 up high, shaking it left and right."
+            "He raises the oonusa up high, shaking it left and right."
         ],
         "char": "Luka",
         "message": "Please leave from Okabe -- I mean Kyouma-san!"
@@ -3756,7 +3756,7 @@
     },
     {
         "context": [
-            "The tip of the oonusa\u2470 touches my upper arm.",
+            "The tip of the oonusa touches my upper arm.",
             "In an anime, this would be the cue for some dramatic shockwave to occur, but nothing like that happens.",
             "The only sound is the chirping of cicadas."
         ],
@@ -5183,7 +5183,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "What!? You've finally mastered that\u2470 secret technique!?"
+        "message": "What!? You've finally mastered that secret technique!?"
     },
     {
         "context": [],
@@ -5295,7 +5295,7 @@
     {
         "context": [],
         "char": "Faris",
-        "message": "It's like we're in a girl's school. That's not too... tabby\u2470."
+        "message": "It's like we're in a girl's school. That's not too... tabby."
     },
     {
         "context": [
@@ -5838,7 +5838,7 @@
             "Her shout resounds throughout the store. Her finger snaps at me."
         ],
         "char": "Faris",
-        "message": "Even though it's painful... no, because\u2470 it's painful, I succeeded my brother's dying wish and purrfected my skills as a RaiNetter, nya!"
+        "message": "Even though it's painful... no, because it's painful, I succeeded my brother's dying wish and purrfected my skills as a RaiNetter, nya!"
     },
     {
         "context": [],
@@ -6271,7 +6271,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Sorry to disappoint, but in recent years it's become common knowledge that that\u2470 is a misquote. Muhahaha!"
+        "message": "Sorry to disappoint, but in recent years it's become common knowledge that that is a misquote. Muhahaha!"
     },
     {
         "context": [],
@@ -6553,7 +6553,7 @@
             "And get pierced by a sharp stare."
         ],
         "char": "Rintaro",
-        "message": "Impossible! What are you\u2470 doing here!?"
+        "message": "Impossible! What are you doing here!?"
     },
     {
         "context": [],
@@ -6935,12 +6935,12 @@
             "Way to go, Daru. That's my right-hand man! Always gets the job done."
         ],
         "char": "Kurisu",
-        "message": "I get it. You're both\u2470 pervs."
+        "message": "I get it. You're both pervs."
     },
     {
         "context": [],
         "char": "Itaru",
-        "message": "Well... you could\u2470 say that."
+        "message": "Well... you could say that."
     },
     {
         "context": [
@@ -7048,7 +7048,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Condition One: You must become a lab mem\u2470."
+        "message": "Condition One: You must become a lab mem."
     },
     {
         "context": [],
@@ -7228,7 +7228,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "You say something? Genius perv\u2470 girl?"
+        "message": "You say something? Genius perv girl?"
     },
     {
         "context": [],
@@ -7276,7 +7276,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "I think we can at least throw out completely worthless\u2470 theories like electromagnetic weaponry and teleportation."
+        "message": "I think we can at least throw out completely worthless theories like electromagnetic weaponry and teleportation."
     },
     {
         "context": [
@@ -8120,7 +8120,7 @@
             "I whisper the words.",
             "Words that have no meaning.",
             "Words I use simply because they sound cool.",
-            "These words have meaning because\u2470 they have no meaning.",
+            "These words have meaning because they have no meaning.",
             "After years of repeated use, just speaking them is enough to calm my heart."
         ],
         "char": "Itaru",
@@ -8238,17 +8238,17 @@
             "Oh well. Let's get to the point."
         ],
         "char": "Rintaro",
-        "message": "The mail was sent to the past\u2470."
+        "message": "The mail was sent to the past."
     },
     {
         "context": [],
         "char": "Rintaro",
-        "message": "The chicken returned\u2470 to its frozen state."
+        "message": "The chicken returned to its frozen state."
     },
     {
         "context": [],
         "char": "Rintaro",
-        "message": "The plucked banana returned\u2470 to the bunch."
+        "message": "The plucked banana returned to the bunch."
     },
     {
         "context": [],
@@ -9369,7 +9369,7 @@
             "Sure enough, she doesn't offer any other information. She just keeps that insincere smile plastered on her face."
         ],
         "char": "Rintaro",
-        "message": "Who are\u2470 you?"
+        "message": "Who are you?"
     },
     {
         "context": [],
@@ -10710,7 +10710,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "You know... them\u2470."
+        "message": "You know... them."
     },
     {
         "context": [],
@@ -10854,7 +10854,7 @@
     },
     {
         "context": [
-            "So he's paying her to not\u2470 clean?",
+            "So he's paying her to not clean?",
             "Something's wrong with that guy."
         ],
         "char": "Rintaro",
@@ -11363,8 +11363,8 @@
     },
     {
         "context": [
-            "Well, she is\u2470 only a temporary member.",
-            "No, it's because\u2470 she's a temporary member that we need to get as much out of her as we can."
+            "Well, she is only a temporary member.",
+            "No, it's because she's a temporary member that we need to get as much out of her as we can."
         ],
         "char": "Kurisu",
         "message": "...I regret losing myself to curiosity back then."
@@ -11849,7 +11849,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "I will never\u2470 get involved with time travel research!"
+        "message": "I will never get involved with time travel research!"
     },
     {
         "context": [
@@ -12175,7 +12175,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "SERN? You mean... the\u2470 SERN?"
+        "message": "SERN? You mean... the SERN?"
     },
     {
         "context": [],
@@ -13112,7 +13112,7 @@
             "Why the long faces, men!?"
         ],
         "char": "Rintaro",
-        "message": "Operation Sweet Side was a suicide\u2470 attack!"
+        "message": "Operation Sweet Side was a suicide attack!"
     },
     {
         "context": [],
@@ -13154,7 +13154,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "'If I face you, you'll tell me everything you know!' If I face\u2470 you. Now do you understand?"
+        "message": "'If I face you, you'll tell me everything you know!' If I face you. Now do you understand?"
     },
     {
         "context": [],
@@ -13242,7 +13242,7 @@
     {
         "context": [],
         "char": "Faris",
-        "message": "I'm not an expert\u2470, nya. Papa collected them, so we've got tons at home, that's all."
+        "message": "I'm not an expert, nya. Papa collected them, so we've got tons at home, that's all."
     },
     {
         "context": [],
@@ -14206,7 +14206,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "Not because I wanted\u2470 to or anything. Don't get me wrong."
+        "message": "Not because I wanted to or anything. Don't get me wrong."
     },
     {
         "context": [
@@ -14384,7 +14384,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "It's unnatural not\u2470 to be introduced in this situation!"
+        "message": "It's unnatural not to be introduced in this situation!"
     },
     {
         "context": [],
@@ -16566,7 +16566,7 @@
             "Kurisu doesn't step back this time. Without taking her eyes off me, she bites her lip hard and curls her hands into fists."
         ],
         "char": "Rintaro",
-        "message": "Did you just call me Okabe\u2470?"
+        "message": "Did you just call me Okabe?"
     },
     {
         "context": [],
@@ -17101,7 +17101,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Assistant! You get it\u2470, don't you!?"
+        "message": "Assistant! You get it, don't you!?"
     },
     {
         "context": [],
@@ -17787,7 +17787,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Z obviously stands for jelly (zerii\u2470)!"
+        "message": "Z obviously stands for jelly (zerii)!"
     },
     {
         "context": [],
@@ -19746,7 +19746,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Hmph, 'bad' you say? We\u2470 are bad? Absurd."
+        "message": "Hmph, 'bad' you say? We are bad? Absurd."
     },
     {
         "context": [],
@@ -21149,7 +21149,7 @@
     {
         "context": [
             "I sigh and take a boxed lunch out of the convenience store bag.",
-            "It's cold, so I toss it into the PhoneWave (name subject to change) and set the timer normally\u2470."
+            "It's cold, so I toss it into the PhoneWave (name subject to change) and set the timer normally."
         ],
         "char": "Mayuri",
         "message": "If you want a shower, there's one here. It doesn't have a bath, though. Okarin always uses it."
@@ -21781,7 +21781,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "It's just that I have\u2470 to admit it for now. If we investigate how the PhoneWave works, it might turn out to be something that only seems\u2470 like time travel."
+        "message": "It's just that I have to admit it for now. If we investigate how the PhoneWave works, it might turn out to be something that only seems like time travel."
     },
     {
         "context": [],
@@ -21964,7 +21964,7 @@
             "It looks like it's standing still.",
             "Its slowness gives it that illusion.",
             "I don't know what it is.",
-            "But it is something\u2470."
+            "But it is something."
         ],
         "char": "",
         "message": "The event horizon."
@@ -22055,7 +22055,7 @@
             "I want to go back.",
             "I can't look back.",
             "I can't go back.",
-            "I face towards the thing\u2470.",
+            "I face towards the thing.",
             "I face the future of becoming a jellyman.",
             "While frozen for eternity..."
         ],
@@ -22675,7 +22675,7 @@
             "And she was so eager to meet the super hacka before."
         ],
         "char": "Itaru",
-        "message": "Hey, Okarin. Did you... do\u2470 something to her?"
+        "message": "Hey, Okarin. Did you... do something to her?"
     },
     {
         "context": [],
@@ -22685,7 +22685,7 @@
     {
         "context": [],
         "char": "Itaru",
-        "message": "Pictures... pictures\u2470? So you're going to blackmail her and force her to be our sex toy..."
+        "message": "Pictures... pictures? So you're going to blackmail her and force her to be our sex toy..."
     },
     {
         "context": [],
@@ -23127,7 +23127,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "In other words, Christina, you want me to erase\u2470 Mister Braun."
+        "message": "In other words, Christina, you want me to erase Mister Braun."
     },
     {
         "context": [],
@@ -24196,7 +24196,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "That is\u2470 an awful lot of money... hahaha..."
+        "message": "That is an awful lot of money... hahaha..."
     },
     {
         "context": [],
@@ -25903,7 +25903,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "It happened. And then everyone except me forgot about it. Or rather, the fact that it happened was erased\u2470 from history."
+        "message": "It happened. And then everyone except me forgot about it. Or rather, the fact that it happened was erased from history."
     },
     {
         "context": [],
@@ -25938,7 +25938,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "Or are you saying you didn't change because you're the observer? In that case, you're claiming that you're not a human being\u2470."
+        "message": "Or are you saying you didn't change because you're the observer? In that case, you're claiming that you're not a human being."
     },
     {
         "context": [
@@ -26069,7 +26069,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "You\u2470 understand me\u2470?"
+        "message": "You understand me?"
     },
     {
         "context": [],
@@ -26223,7 +26223,7 @@
             "First, I feel a sense of pride.",
             "Next comes apprehension. Could this be a trap?",
             "In the first place, I can't confirm if this is the real John Titor. And I don't even know if the John Titor from 2000 was really a time traveler.",
-            "If Titor's worldline theory holds, then that could\u2470 explain the supernatural events I've experienced.",
+            "If Titor's worldline theory holds, then that could explain the supernatural events I've experienced.",
             "But this last statement is pretty hard to swallow.",
             "As soon as I begin to doubt, all of his words start to smell like lies.",
             "That stuff about the IBN 5100 might have been a lie too. That mysterious program code could be just a simple bug.",
@@ -26335,7 +26335,7 @@
             "Daru and Kurisu give me exasperated stares, but I ignore them."
         ],
         "char": "Rintaro",
-        "message": "Me, the Messiah? Hmph. Ludicrous! To think that I\u2470 would save humanity!"
+        "message": "Me, the Messiah? Hmph. Ludicrous! To think that I would save humanity!"
     },
     {
         "context": [],
@@ -26544,7 +26544,7 @@
         "context": [
             "One good look at my face, and Daru seems to understand I'm not joking.",
             "Kurisu, on the other hand, has a sour look. But she's always like that.",
-            "Why did everyone else lose their memories? Actually, did\u2470 everyone else lose their memories?",
+            "Why did everyone else lose their memories? Actually, did everyone else lose their memories?",
             "In order to find out, I need them to perform the same experiment."
         ],
         "char": "Itaru",
@@ -27171,7 +27171,7 @@
             "Nae avoids me and Daru, but she adores Mayuri, and always goes for a flying hug whenever she gets a chance.",
             "Daru sometimes complains about that.",
             "\"What a lucky girl! I wish I could jump into Mayu-shi's chest like that!\"",
-            "\"No, wait. Maybe it would be better to have Nae-tan jump into my\u2470 chest!\"",
+            "\"No, wait. Maybe it would be better to have Nae-tan jump into my chest!\"",
             "His internal debate went on for hours."
         ],
         "char": "Mayuri",
@@ -27842,7 +27842,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "I-I'm not agreeing\u2470 with you, exactly. If we don't collect data, then we'll never figure out how the PhoneWave works."
+        "message": "I-I'm not agreeing with you, exactly. If we don't collect data, then we'll never figure out how the PhoneWave works."
     },
     {
         "context": [],
@@ -28174,7 +28174,7 @@
             "Daru and Kurisu, who are discussing something in front of the X68000, look at me strangely.",
             "Ah...",
             "Again.",
-            "This feeling of wrongness\u2470.",
+            "This feeling of wrongness.",
             "It's the same as yesterday."
         ],
         "char": "Kurisu",
@@ -29070,7 +29070,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "It's only embarrassing because you\u2470 think it is."
+        "message": "It's only embarrassing because you think it is."
     },
     {
         "context": [],
@@ -29630,7 +29630,7 @@
     {
         "context": [
             "Does that mean Kurisu knows the meaning of the phrase \"Someone this cute can't be a girl\"?",
-            "So she is\u2470 an @channeler..."
+            "So she is an @channeler..."
         ],
         "char": "Rintaro",
         "message": "Lukako. You're fine just the way you are. I will not reject you, be you man or be you woman. Nor will anyone else here."
@@ -30368,7 +30368,7 @@
     {
         "context": [],
         "char": "Itaru",
-        "message": "8(ya) 3(sa) 1(i) for veggies (yasai\u2470), duh. VEGGIES VEGGIES VEGGIES -- we just have to drill this into Luka-shi's mother's brain."
+        "message": "8(ya) 3(sa) 1(i) for veggies (yasai), duh. VEGGIES VEGGIES VEGGIES -- we just have to drill this into Luka-shi's mother's brain."
     },
     {
         "context": [],
@@ -30606,7 +30606,7 @@
             "I don't want to think about how Kurisu might react if I suddenly ask \"Is Lukako a girl?\"",
             "I should wait until I can get Lukako alone, and check then.",
             "But considering how his appearance hasn't changed at all, it's very likely that the sex change failed.",
-            "In that case, what did\u2470 Lukako's D-Mail change?",
+            "In that case, what did Lukako's D-Mail change?",
             "It's just like the Moeka experiment. The result is different from what we expected.",
             "The real problem... is that we have no control.",
             "After I leave the lab, I head to MayQueen+Nyan\u246f to think.",
@@ -30864,7 +30864,7 @@
     {
         "context": [],
         "char": "Faris",
-        "message": "By the way, it's been bugging me, but what is\u2470 time anyway, nya?"
+        "message": "By the way, it's been bugging me, but what is time anyway, nya?"
     },
     {
         "context": [],
@@ -31025,7 +31025,7 @@
         "context": [
             "The strict definition of time, similar to the question of \"Where is the self?\", is one of humanity's eternal questions. Countless renowned scholars have left this question unanswered.",
             "There's no way amateurs like us can answer it.",
-            "But there's one thing I can\u2470 do."
+            "But there's one thing I can do."
         ],
         "char": "Rintaro",
         "message": "Heh. Heh heh heh. Muhahaha!"
@@ -31038,7 +31038,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Fret not. Though physics and philosophy may deny us, our machine has\u2470 made time travel possible! Am I correct, Daru!?"
+        "message": "Fret not. Though physics and philosophy may deny us, our machine has made time travel possible! Am I correct, Daru!?"
     },
     {
         "context": [],
@@ -33379,7 +33379,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Gonna play dumb, Akiha Rumiho\u2470?"
+        "message": "Gonna play dumb, Akiha Rumiho?"
     },
     {
         "context": [],
@@ -33599,7 +33599,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "There's nothing to separate. You are\u2470 Faris NyanNyan, are you not?"
+        "message": "There's nothing to separate. You are Faris NyanNyan, are you not?"
     },
     {
         "context": [],
@@ -33949,7 +33949,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "...I'm a monster? What a terrible thing to say. Not that you're wrong\u2470, exactly. Heh heh heh."
+        "message": "...I'm a monster? What a terrible thing to say. Not that you're wrong, exactly. Heh heh heh."
     },
     {
         "context": [],
@@ -34474,7 +34474,7 @@
             "A voice whispers from deep within, deeper than reason.",
             "I play the conversation back in my head and soon realize the source of my discomfort.",
             "The Faris I knew had never been to an official RaiNet tournament.",
-            "And yet now she's about to compete in the tournament finals\u2470.",
+            "And yet now she's about to compete in the tournament finals.",
             "Which means she's been going to tournaments for a while.",
             "Is this the change that Faris wanted to make?",
             "Considering the recipient was her father, maybe he was strict and wouldn't let her go to tournaments.",
@@ -35203,7 +35203,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "No no no! That's not how I see\u2470 you, Lukako. You're a guy, remember!? Or are you denying reality too!?"
+        "message": "No no no! That's not how I see you, Lukako. You're a guy, remember!? Or are you denying reality too!?"
     },
     {
         "context": [],
@@ -35346,7 +35346,7 @@
     {
         "context": [
             "Man, that was dumb.",
-            "I didn't think it would be gone\u2470.",
+            "I didn't think it would be gone.",
             "Lukako has become a girl.",
             "Her face hasn't changed, and she's flat as a board, but she's definitely a girl.",
             "There's no denying what my hand didn't feel.",
@@ -35368,7 +35368,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "I knew\u2470 the worldline had changed. My magic eye, Reading Steiner, saw the shift in time."
+        "message": "I knew the worldline had changed. My magic eye, Reading Steiner, saw the shift in time."
     },
     {
         "context": [],
@@ -35498,7 +35498,7 @@
             "Lukako is still crying.",
             "As punishment, I spend the next thirty minutes on my knees under Kurisu's watchful eye.",
             "If I slouch for a second, I get the corner of her book.",
-            "I'd accept being told \"Die, Pervert\" if it were coming from Lukako. But why the hell is Kurisu butting in? I didn't do anything to her\u2470.",
+            "I'd accept being told \"Die, Pervert\" if it were coming from Lukako. But why the hell is Kurisu butting in? I didn't do anything to her.",
             "Does she think she's one of those class president characters?",
             "Anyway, I flee the lab as soon as my punishment is over. The silent pressure from the girls is just too much to bear.",
             "I step into the sun and stretch. My legs are numb from the kneeling, so I can barely stand straight.",
@@ -35841,7 +35841,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Are you trying to insult me? I am not a nice guy\u2470. I am a mad scientist who experiments on women and children!"
+        "message": "Are you trying to insult me? I am not a nice guy. I am a mad scientist who experiments on women and children!"
     },
     {
         "context": [],
@@ -36025,7 +36025,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Now that you've rejected my plan, there's no way\u2470 I'm not going through with it! You have underestimated my pride!"
+        "message": "Now that you've rejected my plan, there's no way I'm not going through with it! You have underestimated my pride!"
     },
     {
         "context": [],
@@ -36244,7 +36244,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "Everyone thinks he or she is the best. You think you\u2470 have an ego? Over there, scientists hurl insults at each other on a daily basis. Sometimes they even sabotage each other's work."
+        "message": "Everyone thinks he or she is the best. You think you have an ego? Over there, scientists hurl insults at each other on a daily basis. Sometimes they even sabotage each other's work."
     },
     {
         "context": [],
@@ -36553,7 +36553,7 @@
     {
         "context": [
             "...What?",
-            "This is the smell of food\u2470!?"
+            "This is the smell of food!?"
         ],
         "char": "Kurisu",
         "message": "I'll help too."
@@ -37162,7 +37162,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Wait, Titor? As in that\u2470 Titor!?"
+        "message": "Wait, Titor? As in that Titor!?"
     },
     {
         "context": [],
@@ -37386,7 +37386,7 @@
     },
     {
         "context": [
-            "Look at her sitting there all spaced out. Mayuri needs\u2470 my protection.",
+            "Look at her sitting there all spaced out. Mayuri needs my protection.",
             "That dream was wrong.",
             "I chug a Dr P and check my phone.",
             "No new emails.",
@@ -37481,7 +37481,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "No, it's not over yet. If I can just acquire the item\u2470, I can turn the tide!"
+        "message": "No, it's not over yet. If I can just acquire the item, I can turn the tide!"
     },
     {
         "context": [],
@@ -37869,12 +37869,12 @@
     {
         "context": [],
         "char": "Itaru",
-        "message": "The official line is that mini black holes might\u2470 manifest as a byproduct of the particle collision, but that's not the truth."
+        "message": "The official line is that mini black holes might manifest as a byproduct of the particle collision, but that's not the truth."
     },
     {
         "context": [],
         "char": "Rintaro",
-        "message": "According to the top secret documents we found, the LHC was intended\u2470 to create black holes from the very beginning."
+        "message": "According to the top secret documents we found, the LHC was intended to create black holes from the very beginning."
     },
     {
         "context": [
@@ -38276,7 +38276,7 @@
     {
         "context": [],
         "char": "Itaru",
-        "message": "And even if it were, there'd be like exabytes\u2470 of data or something! You want to compress that into 36 bytes? Are you high?"
+        "message": "And even if it were, there'd be like exabytes of data or something! You want to compress that into 36 bytes? Are you high?"
     },
     {
         "context": [],
@@ -38406,7 +38406,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "But converting a human's memories\u2470 may be possible!"
+        "message": "But converting a human's memories may be possible!"
     },
     {
         "context": [
@@ -38673,7 +38673,7 @@
         "context": [
             "It seems like a strange coincidence that cellphones would be the medium of time travel, but really, could it have been anything else?",
             "These days, people wear their phones like a second skin. No other medium could reliably deliver the memories to their intended target.",
-            "The more I think about it, the more I realize that this was meant to be\u2470."
+            "The more I think about it, the more I realize that this was meant to be."
         ],
         "char": "Rintaro",
         "message": "Heh... heh heh heh... MUHAHAHA!"
@@ -38715,7 +38715,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "Well, this is\u2470 Akihabara. I should be able to find the parts I need."
+        "message": "Well, this is Akihabara. I should be able to find the parts I need."
     },
     {
         "context": [],
@@ -38810,7 +38810,7 @@
         "context": [
             "She sighs sadly.",
             "Ah, so that's what she wants to talk about.",
-            "A conundrum. This isn't like before, when she was merely an advisor. The time leap project depends\u2470 on Kurisu to succeed.",
+            "A conundrum. This isn't like before, when she was merely an advisor. The time leap project depends on Kurisu to succeed.",
             "It is clear, however, that she will be unable to focus as long as these petty concerns distract her.",
             "In that case, it falls to me, the great Hououin Kyouma, to solve her problem once and for all!",
             "Only then can she devote herself fully to the future of the lab!"
@@ -38879,7 +38879,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "I even read my father's papers. I was a little girl trying to comprehend theoretical physics, but I gave it everything I had. I needed\u2470 to understand."
+        "message": "I even read my father's papers. I was a little girl trying to comprehend theoretical physics, but I gave it everything I had. I needed to understand."
     },
     {
         "context": [],
@@ -39786,7 +39786,7 @@
             "As long as that condition is met, there should never be a problem with setting the destination.",
             "The real problem is what inside the PhoneWave (name subject to change) is acting as the lifter.",
             "Until we figure that out, we can't reproduce the discharge phenomenon at will. The PhoneWave (name subject to change) will remain incomplete.",
-            "On the other hand, if we can\u2470 figure it out, we'll have an endless source of electrons that, unlike SERN's, needs no tuning.",
+            "On the other hand, if we can figure it out, we'll have an endless source of electrons that, unlike SERN's, needs no tuning.",
             "I'm exhilarated.",
             "The PhoneWave (name subject to change) is evolving by the day.",
             "Our invention of the time leap machine will put us light years ahead of SERN.",
@@ -39832,7 +39832,7 @@
             "Mayuri's grandmother passed away when Mayuri was in elementary school."
         ],
         "char": "Mayuri",
-        "message": "Yeah... It's too bad, but I guess I don't really need\u2470 to see her."
+        "message": "Yeah... It's too bad, but I guess I don't really need to see her."
     },
     {
         "context": [],
@@ -40166,7 +40166,7 @@
     {
         "context": [
             "She rises to her feet unsteadily, then staggers off into the crowd. It's like she's forgotten about us completely.",
-            "Mayuri and I can only watch her go. There's an indescribable aura\u2470 about her that holds us back."
+            "Mayuri and I can only watch her go. There's an indescribable aura about her that holds us back."
         ],
         "char": "Mayuri",
         "message": "What do you think is wrong with Moeka-san?"
@@ -40936,7 +40936,7 @@
             "SERN uses the lifter to keep the compression under control, but we don't want that.",
             "We're going to dial SERN's lifter down. Not so much that it endangers the world, of course, but enough to compress our memory data to under 36 bytes.",
             "Daru has been coding the necessary program.",
-            "As for me, I've been searching for our\u2470 lifter, the unknown device that pumps electrons into the PhoneWave (name subject to change) and keeps our black hole open.",
+            "As for me, I've been searching for our lifter, the unknown device that pumps electrons into the PhoneWave (name subject to change) and keeps our black hole open.",
             "Kurisu couldn't find anything that could serve as a lifter inside the microwave, so it must be something on the outside.",
             "We're not sure what that could be, and so far we have no idea where to start looking.",
             "Yesterday, I consulted Daru about that threatening email.",
@@ -41396,7 +41396,7 @@
     },
     {
         "context": [
-            "Wait... it's over\u2470?",
+            "Wait... it's over?",
             "I carefully step through the rubble and take the remote from the dazed Mister Braun's hand.",
             "I press the red power button.",
             "The 42-inch CRT instantly comes to life. I stare at the image on the screen... and smile."
@@ -41686,7 +41686,7 @@
     {
         "context": [
             "Kurisu orders me with a sour look.",
-            "It's like I'm\u2470 the assistant here."
+            "It's like I'm the assistant here."
         ],
         "char": "Kurisu",
         "message": "If anyone can do it, it's you. You made an amazing discovery just now, didn't you?"
@@ -43520,7 +43520,7 @@
     {
         "context": [],
         "char": "Suzuha",
-        "message": "I know\u2470."
+        "message": "I know."
     },
     {
         "context": [
@@ -43900,7 +43900,7 @@
         "context": [
             "Taken separately, each of these elements was insignificant.",
             "But if I consider them part of a single line, they all point to one inescapable truth.",
-            "We've come too far.\u2470",
+            "We've come too far.",
             "Fear seizes my heart in an icy grip. I can feel anxiety eating at my brain.",
             "I can't breathe.",
             "Even though it's hot and humid, my body shivers.",
@@ -45395,7 +45395,7 @@
     {
         "context": [],
         "char": "Suzuha",
-        "message": "I know\u2470."
+        "message": "I know."
     },
     {
         "context": [],
@@ -47578,7 +47578,7 @@
             "How could anyone do such a thing?",
             "Now that I've recovered slightly from the shock, I realize that Mayuri was probably still alive when Moeka sent me that picture.",
             "A flight to France takes at least twelve hours, after all.",
-            "Even so, her fate was already decided\u2470.",
+            "Even so, her fate was already decided.",
             "Perhaps that 50-year-old newspaper article appeared out of thin air the instant they found her.",
             "I don't know why her cause of death changed.",
             "I don't have time to investigate.",
@@ -47640,7 +47640,7 @@
         "context": [
             "Mayuri smiles happily at that answer.",
             "That's right. While we wait for the train, I should ask Mayuri about her whereabouts today.",
-            "If -- if\u2470 -- I have to leap again, I'll need all the information I can get."
+            "If -- if -- I have to leap again, I'll need all the information I can get."
         ],
         "char": "Rintaro",
         "message": "Where did you go after you saw Lukako?"
@@ -47707,7 +47707,7 @@
         "context": [
             "There she is, leaning out over the tracks. She's off balance, as if she stumbled, or someone pushed her.",
             "She seems to hang there for a moment, and then the train comes screaming into the station.",
-            "I hear a sound\u2470 from under the train. I can't describe it, but it makes me instantly nauseous.",
+            "I hear a sound from under the train. I can't describe it, but it makes me instantly nauseous.",
             "Sparks fly as the train slams on its brakes.",
             "The people on the platform scream.",
             "I turn to where Mayuri was just a moment ago.",
@@ -47928,7 +47928,7 @@
             "The world itself is killing Mayuri.",
             "This time, I don't leap into action immediately. Instead, I sit on the couch and collect my thoughts.",
             "Every time I try to save Mayuri, it ends in the worst possible way.",
-            "To make matters worse, I no longer even know what I'm supposed to be saving her from\u2470.",
+            "To make matters worse, I no longer even know what I'm supposed to be saving her from.",
             "Cause and effect.",
             "Why does Mayuri die?",
             "At first, I thought that it was Moeka and her hit squad, sent by SERN to steal our time machine.",
@@ -48320,7 +48320,7 @@
     },
     {
         "context": [
-            "Unnecessary.\u2470",
+            "Unnecessary.",
             "I nearly pull the trigger."
         ],
         "char": "Moeka",
@@ -48685,7 +48685,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "You don't have to break\u2470 it, Okabe."
+        "message": "You don't have to break it, Okabe."
     },
     {
         "context": [],
@@ -49875,7 +49875,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Wait. We're not getting anywhere. Instead of analyzing what I've done\u2470, let's think about what we can do\u2470."
+        "message": "Wait. We're not getting anywhere. Instead of analyzing what I've done, let's think about what we can do."
     },
     {
         "context": [],
@@ -51241,7 +51241,7 @@
             "Let me get this straight.",
             "The reason I can't save Mayuri... is that her death is the event upon which this attractor field converges?",
             "But that means...",
-            "That means the world really is\u2470 killing Mayuri."
+            "That means the world really is killing Mayuri."
         ],
         "char": "Itaru",
         "message": "But then, isn't it impossible to change the future? It always converges in the end, right? No matter what you do, the result is the same."
@@ -51325,7 +51325,7 @@
     },
     {
         "context": [
-            "So in other words, there are worlds where it did\u2470 occur?"
+            "So in other words, there are worlds where it did occur?"
         ],
         "char": "Suzuha",
         "message": "And that brings us to 2010."
@@ -52913,7 +52913,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Everyone's fighting for you\u2470. Don't you get it!?"
+        "message": "Everyone's fighting for you. Don't you get it!?"
     },
     {
         "context": [],
@@ -54645,7 +54645,7 @@
     {
         "context": [],
         "char": "Itaru",
-        "message": "Uh, I wasn't trying to counterfeit\u2470 it."
+        "message": "Uh, I wasn't trying to counterfeit it."
     },
     {
         "context": [],
@@ -55546,7 +55546,7 @@
             "Harsh."
         ],
         "char": "Mayuri",
-        "message": "Um, Mayushii's one hundred millon\u2470 percent sure that Daru-kun is Suzuha's dad."
+        "message": "Um, Mayushii's one hundred millon percent sure that Daru-kun is Suzuha's dad."
     },
     {
         "context": [],
@@ -56469,7 +56469,7 @@
     {
         "context": [],
         "char": "Suzuha",
-        "message": "Forgive me. Forgive me. Forgive me, forgive me, forgive me, forgive me!\u2470"
+        "message": "Forgive me. Forgive me. Forgive me, forgive me, forgive me, forgive me!"
     },
     {
         "context": [],
@@ -56576,7 +56576,7 @@
             "My hands curl, crumpling the page. I realize that I am crying.",
             "Suzuha failed?",
             "She lost her memory?",
-            "Her life... was meaningless\u2470?",
+            "Her life... was meaningless?",
             "This can't be happening.",
             "Nobody says a word. Their faces, like mine, are frozen in disbelief.",
             "I turn to Daru. He's whiter than a sheet."
@@ -56626,7 +56626,7 @@
             "What was Suzuha feeling as she wrote this letter?",
             "I look again at the words scrawled upon the page, every character resonant with despair.",
             "I wanted to welcome her back with a smile.",
-            "Instead... this\u2470.",
+            "Instead... this.",
             "Suzuha is dead, ten years gone.",
             "...Wait. How did she die?",
             "Don't tell me...",
@@ -56729,7 +56729,7 @@
     },
     {
         "context": [
-            "My life was meaningless.\u2470",
+            "My life was meaningless.",
             "I recall the last words she wrote in her letter. Words of unimaginable despair.",
             "She didn't deserve so bleak an end."
         ],
@@ -56793,7 +56793,7 @@
             "Daru's skills are second to none, and the time machine was built by his own hand, 26 years in the future.",
             "It seems logical that he would be able to fix it.",
             "But look at it another way.",
-            "It took Daru twenty-six years\u2470 to learn enough to build the time machine, and he had to reverse-engineer SERN's to do it.",
+            "It took Daru twenty-six years to learn enough to build the time machine, and he had to reverse-engineer SERN's to do it.",
             "Maybe it's unreasonable to expect our Daru to perform flawless repairs in only two days.",
             "In that case, can I have Daru use the Time Leap Machine and repeat these two days until he repairs it?",
             "No. He'll have to start from scratch each time. Two days just aren't enough.",
@@ -56814,7 +56814,7 @@
             "She would have arrived safely in 1975.",
             "The solution is obvious. I need to cancel that D-Mail.",
             "But can I really do that?",
-            "If I change the past so that Suzuha leaves, won't that undo\u2470 the four days we spent together?",
+            "If I change the past so that Suzuha leaves, won't that undo the four days we spent together?",
             "Our frantic search through the streets of Akiba.",
             "Her heartfelt confession on the roof of Radio Kaikan.",
             "Her tearful reunion with her father, Daru.",
@@ -56855,7 +56855,7 @@
             "There are two options.",
             "I can cancel the D-Mail that convinced me to pursue Suzuha. Sending a contradictory D-Mail should do the trick.",
             "Or I can time leap again and prevent Suzuha from leaving.",
-            "Two options... but really, just one\u2470.",
+            "Two options... but really, just one.",
             "Do not hesitate, Okabe Rintaro.",
             "Hesitation is unforgivable.",
             "You already know what you must do.",
@@ -56896,7 +56896,7 @@
             "But this is the only choice I have.",
             "I set the PhoneWave to 120 hours ago. This D-Mail should arrive a few hours after the first.",
             "Now I just need to send it.",
-            "Save Mayuri -- that\u2470 is my purpose.",
+            "Save Mayuri -- that is my purpose.",
             "That is what drove me to leap through time.",
             "I'll do whatever it takes to save her.",
             "This is just one more sacrifice.",
@@ -57633,7 +57633,7 @@
             "I imagine she'll put up a fight. She was a member of the Resistance in her time, and I know she's stronger than she looks.",
             "But she's still just a girl. It may take some doing, but I'll have my way with her in the end.",
             "Another me -- Hououin Kyouma, perhaps? -- is whispering inside my head.",
-            "\"You want a woman, don't you?\" it says. \"Of course you do. It's instinct\u2470.\"",
+            "\"You want a woman, don't you?\" it says. \"Of course you do. It's instinct.\"",
             "\"So what if she's Daru's daughter? So what if she's on a mission to save the future?\"",
             "Forget about that.",
             " ",
@@ -59101,7 +59101,7 @@
     },
     {
         "context": [
-            "Knew\u2470 her?"
+            "Knew her?"
         ],
         "char": "Rintaro",
         "message": "So now, she's...?"
@@ -59573,7 +59573,7 @@
             "Did she have to tell Kurisu, of all people?",
             "Mayuri looks so carefree as she stuffs her cheeks with takoyaki.",
             "I'm pretty sure she's smiling not because of my love, but because of the takoyaki's deliciousness. Typical Mayuri.",
-            "But seriously, did you have to tell Kurisu\u2470?"
+            "But seriously, did you have to tell Kurisu?"
         ],
         "char": "Kurisu",
         "message": "So what's the deal?"
@@ -59700,7 +59700,7 @@
             "Then... does that mean I haven't saved her?",
             "Divergence is still less than 1%. Is the world still converging on Mayuri's death?",
             "It can't be.",
-            "It can't\u2470 be.",
+            "It can't be.",
             "I mean, nothing happened yesterday.",
             "Mayuri's here, safe and sound.",
             "So nothing will happen to her. It won't.",
@@ -60294,7 +60294,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "...You're not worried\u2470 about me, are you?"
+        "message": "...You're not worried about me, are you?"
     },
     {
         "context": [],
@@ -62274,7 +62274,7 @@
             "But the Virals must have used their Virus Checker card, because Faris's card is face up. It's a Virus Card.",
             "Every card you send into the enemy Server is added to your total. Normally, you try to get Link Cards through, as that brings you closer to victory.",
             "However, you're not required to reveal any cards you successfully send into your enemy's Server. So although it hurts your point total, you technically can send Virus Cards into your enemy's Server.",
-            "But for some strange reason, Faris is trying to send a revealed\u2470 Virus Card into her enemy's server.",
+            "But for some strange reason, Faris is trying to send a revealed Virus Card into her enemy's server.",
             "Even if it gets through, she won't be fooling anyone.",
             "Moreover, Faris has already taken three Virus Cards. One more, and she'll lose. So she can't send that card through even if she wants to.",
             "So what exactly was she trying to accomplish?",
@@ -62286,7 +62286,7 @@
     {
         "context": [],
         "char": "4\u2103",
-        "message": "In just a few minutes, you'll be demoted to Former\u2470 Champion!"
+        "message": "In just a few minutes, you'll be demoted to Former Champion!"
     },
     {
         "context": [],
@@ -62429,11 +62429,11 @@
     {
         "context": [
             "Change Directory is a special type of card called a \"Terminal Card\".",
-            "Once per game, it allows you to switch the placement of two of your own pieces. Of course, you may also pretend\u2470 to switch them.",
+            "Once per game, it allows you to switch the placement of two of your own pieces. Of course, you may also pretend to switch them.",
             "Additionally, if either of the two cards was exposed by Virus Checker, it gets flipped back face down.",
             "I get it!",
             "With Change Directory, she can switch out that Virus Card she placed near the enemy's Server!",
-            "And just as expected, Faris exchanges the Virus Card with a card that 4\u2103 has surrounded with his cards. Or maybe she just pretended\u2470 to.",
+            "And just as expected, Faris exchanges the Virus Card with a card that 4\u2103 has surrounded with his cards. Or maybe she just pretended to.",
             "Either way, nobody knows which card is the Link Card and which is the Virus Card. Nobody except for Faris, that is.",
             "A pretty interesting ploy.",
             "But will it work?",
@@ -63420,7 +63420,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Then, why did\u2470 you go to the conferences?"
+        "message": "Then, why did you go to the conferences?"
     },
     {
         "context": [],
@@ -63741,8 +63741,8 @@
             "Faris really has remembered her D-Mail.",
             "Now that I know the result, all I have to do is send the cancellation D-Mail.",
             "But it's not so simple.",
-            "I need to cancel the D-Mail that prevented her father's death ten years ago\u2470.",
-            "Isn't that the same as killing him again\u2470?"
+            "I need to cancel the D-Mail that prevented her father's death ten years ago.",
+            "Isn't that the same as killing him again?"
         ],
         "char": "Rintaro",
         "message": "!?"
@@ -64707,7 +64707,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "We can do something! There might be a world where you don't lose your dad and\u2470 Mayuri doesn't die! If we try--"
+        "message": "We can do something! There might be a world where you don't lose your dad and Mayuri doesn't die! If we try--"
     },
     {
         "context": [],
@@ -66416,7 +66416,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "Not everything\u2470. I just... don't have a single memory of us as a couple."
+        "message": "Not everything. I just... don't have a single memory of us as a couple."
     },
     {
         "context": [],
@@ -66833,7 +66833,7 @@
             "Faris gently takes her phone from my hand."
         ],
         "char": "Faris",
-        "message": "If you did see it, then please forget about it, nya. Can't let that cat out of the bag, nya. Or else they\u2470 will awaken, nya..."
+        "message": "If you did see it, then please forget about it, nya. Can't let that cat out of the bag, nya. Or else they will awaken, nya..."
     },
     {
         "context": [],
@@ -67414,7 +67414,7 @@
         "context": [
             "It's the Rounders. They kidnapped her.",
             "And then they probably killed her.",
-            "To them, Mayuri is expendable\u2470.",
+            "To them, Mayuri is expendable.",
             "I grind my teeth in frustration.",
             "It didn't work. I still haven't averted Mayuri's death.",
             "I toss Moad Snake onto the couch.",
@@ -67468,7 +67468,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "That's why I want to ask a girl. Plus, you're my assistant, so I need you to save my ass\u2470 this instant\u2470."
+        "message": "That's why I want to ask a girl. Plus, you're my assistant, so I need you to save my ass this instant."
     },
     {
         "context": [],
@@ -68937,7 +68937,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "H-Hououin Kyouma does not go on dates\u2470. Much less with his assistant. Ridiculous."
+        "message": "H-Hououin Kyouma does not go on dates. Much less with his assistant. Ridiculous."
     },
     {
         "context": [],
@@ -70479,7 +70479,7 @@
             "Wait a goddamn second!",
             "Is she saying what I think she's saying?",
             "But that Lukako was a guy!",
-            "Does that mean I made the guy\u2470 Lukako fall in love with me?",
+            "Does that mean I made the guy Lukako fall in love with me?",
             "My mind goes blank.",
             "Oh god!",
             "By the time I drop her off back at the shrine, I'm worn out physically and mentally.",
@@ -71136,7 +71136,7 @@
             "I know that, and yet no words come. I just stand there, like a useless statue.",
             "The cause of Lukako's tears is undoubtedly me.",
             "I didn't treat her right as my girlfriend, even if it was only a temporary arrangement.",
-            "And now it ends with me watching\u2470 as Lukako cries.",
+            "And now it ends with me watching as Lukako cries.",
             "Lukako...",
             "I'm the one who did this to her. I'm the cause of her grief.",
             "And yet..."
@@ -72628,7 +72628,7 @@
             "I chose to not turn Lukako back.",
             "I chose to not save Mayuri.",
             "No, let's not beat around the bush.",
-            "I chose to let her die.\u2470",
+            "I chose to let her die.",
             "It's not that I don't want to save her. I do.",
             "But I can't bring myself to make the necessary sacrifice."
         ],
@@ -73321,7 +73321,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "You should also take responsibility for the girl you did\u2470 save."
+        "message": "You should also take responsibility for the girl you did save."
     },
     {
         "context": [],
@@ -73336,7 +73336,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "But she\u2470 is still alive. Thanks to you, she's still alive, as a girl."
+        "message": "But she is still alive. Thanks to you, she's still alive, as a girl."
     },
     {
         "context": [],
@@ -73939,7 +73939,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "You mean you\u2470 want to go back!?"
+        "message": "You mean you want to go back!?"
     },
     {
         "context": [
@@ -74776,7 +74776,7 @@
             "Kurisu interrupts me."
         ],
         "char": "Kurisu",
-        "message": "Are you\u2470 okay?"
+        "message": "Are you okay?"
     },
     {
         "context": [],
@@ -75006,7 +75006,7 @@
             "If Moeka is dead, maybe Mayuri doesn't have to die.",
             "...No. I don't think convergence is that kind.",
             "Fate demands Mayuri's death.",
-            "Whenever I try to stop it, something\u2470 interferes.",
+            "Whenever I try to stop it, something interferes.",
             "True, I'm the one who meddled with the timeline, but haven't I paid the price already?",
             "How did all this happen?",
             "A few weeks ago, I was just a college student with a severe case of chuunibyou.",
@@ -75472,7 +75472,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "...What are\u2470 you doing? Where are you?"
+        "message": "...What are you doing? Where are you?"
     },
     {
         "context": [],
@@ -78727,7 +78727,7 @@
             "Nothing.",
             "It doesn't matter.",
             "My goal is to obtain FB's cellphone and send a D-Mail to Moeka in the past.",
-            "That\u2470 is the reason I'm here.",
+            "That is the reason I'm here.",
             "In any case, I mustn't let his handgun scare me.",
             "There's no turning back now. All I can do is stay on the offensive."
         ],
@@ -79316,7 +79316,7 @@
             "A child's voice. Familiar.",
             "How did she find this place?",
             "How did she get here?",
-            "Why\u2470 did she come here?",
+            "Why did she come here?",
             "\"She ran away.\"",
             "\"Our eyes met.\"",
             "\"Right after I heard the gunshot.\""
@@ -80054,7 +80054,7 @@
     {
         "context": [],
         "char": "Nae",
-        "message": "Fifteen years from now, I killed\u2470 you."
+        "message": "Fifteen years from now, I killed you."
     },
     {
         "context": [
@@ -80078,7 +80078,7 @@
     {
         "context": [],
         "char": "Nae",
-        "message": "But I remember\u2470 the next fifteen years."
+        "message": "But I remember the next fifteen years."
     },
     {
         "context": [
@@ -80123,7 +80123,7 @@
             "For a moment, I panic. But somehow, I manage to convince myself that I'm fine.",
             "I won't die here, I tell myself. This worldline won't accept that.",
             "It's just like Nae said herself.",
-            "It's not that she won't\u2470 kill me. She can't\u2470.",
+            "It's not that she won't kill me. She can't.",
             "If she tried, something would surely interfere."
         ],
         "char": "Nae",
@@ -80226,7 +80226,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "You leapt fifteen years just for that\u2470?"
+        "message": "You leapt fifteen years just for that?"
     },
     {
         "context": [
@@ -80779,7 +80779,7 @@
             "Instead, I fix Kurisu with my stare."
         ],
         "char": "Rintaro",
-        "message": "It's taken me so long -- so long\u2470 -- just to reach this point!"
+        "message": "It's taken me so long -- so long -- just to reach this point!"
     },
     {
         "context": [],
@@ -81001,7 +81001,7 @@
     },
     {
         "context": [
-            "I was right. I had missed something vital... something dire\u2470.",
+            "I was right. I had missed something vital... something dire.",
             "The worldline I set my sights on to save Mayuri.",
             "The worldline upon which Suzuha staked her hope for the future.",
             "The worldline I am at last poised to reach at the end of this long struggle.",
@@ -81156,7 +81156,7 @@
             "The universe itself?",
             "Either way, I am just one insignificant human among billions. Will my prayers truly reach?",
             "I already know what the answer will be.",
-            "And that knowledge, that certainty\u2470, is despair.",
+            "And that knowledge, that certainty, is despair.",
             "ComiMa runs for three straight days, from the 15th to the 17th.",
             "On the last day, I go with Mayuri and stay with her from morning until ComiMa closes.",
             "It's not really my thing, though, and the crowd is ridiculous, so I wait off to the side with Mayuri's bags. From time to time, Mayuri appears with new bags for me to guard, and usually a snack for us to share, but most of the day I spend alone.",
@@ -81239,7 +81239,7 @@
             "\"To confirm your death.\"",
             "Those words pop into my head, but I quickly shake them away.",
             "Why am I so set on Mayuri dying?",
-            "I want her to live\u2470, remember?"
+            "I want her to live, remember?"
         ],
         "char": "Mayuri",
         "message": "Well?"
@@ -81535,7 +81535,7 @@
             "Yes, it happened because fate demanded it.",
             "Yes, her death is unavoidable, the result upon which this worldline converges.",
             "I knew from the beginning that this would happen.",
-            "But I never imagined that she would die saving me... and with a smile\u2470 on her face."
+            "But I never imagined that she would die saving me... and with a smile on her face."
         ],
         "char": "Rintaro",
         "message": "What do you mean, you were finally useful? Tell me, Mayuri..."
@@ -81563,7 +81563,7 @@
             "There must be some other way.",
             "According to Suzuha, 2010 is a point of great divergence at the attractor field level.",
             "I think that divergence had already commenced by the time I sent the D-Mail reporting Kurisu's death.",
-            "So when did\u2470 divergence begin?",
+            "So when did divergence begin?",
             "I can't say for sure, but I think it was the moment we completed the PhoneWave (name subject to change).",
             "That was around the middle of July. Daru and I deemed it a failure right after completion.",
             "By the time Kurisu was killed, there was already a huge divergence at the attractor field level.",
@@ -81580,7 +81580,7 @@
             "Like a magician's trick, it's so obvious once you understand how it works.",
             "The real problem is the timing of the D-Mail.",
             "I moved to the Alpha worldline after Kurisu died.",
-            "If I had sent the D-Mail before\u2470 she died, then I might have been able to intervene, even now, on this worldline.",
+            "If I had sent the D-Mail before she died, then I might have been able to intervene, even now, on this worldline.",
             "But no, that would defy causality. I sent that D-Mail because I saw Kurisu's body. That's the way it has to be.",
             "Who killed her anyway? I still don't know.",
             "It definitely wasn't suicide.",
@@ -81709,7 +81709,7 @@
             "But this time, the alternatives are impossible to compare."
         ],
         "char": "Rintaro",
-        "message": "I have to choose which friend to let die. It would be so much easier if I knew\u2470 what was right."
+        "message": "I have to choose which friend to let die. It would be so much easier if I knew what was right."
     },
     {
         "context": [],
@@ -82412,7 +82412,7 @@
     },
     {
         "context": [
-            "She's right. Even if I don't tell Mayuri the truth, I need to at least tell her something\u2470.",
+            "She's right. Even if I don't tell Mayuri the truth, I need to at least tell her something.",
             "I'll postpone my decision, and go see Mayuri.",
             "It's afternoon on the first day of ComiMa, and the crowds are finally beginning to thin out.",
             "Of course, the industry booths and cosplay area are still packed, but at least I don't have to wait in line to get in.",
@@ -82478,7 +82478,7 @@
     },
     {
         "context": [
-            "Does she... remember her deaths? All of them?\u2470",
+            "Does she... remember her deaths? All of them?",
             "Is she inheriting memories like I do?"
         ],
         "char": "Mayuri",
@@ -82863,7 +82863,7 @@
     {
         "context": [
             "Mayuri stands up and turns to the grave once more.",
-            "As an offering, she leaves a brand new white lily, as well as some dango\u2470 dumplings."
+            "As an offering, she leaves a brand new white lily, as well as some dango dumplings."
         ],
         "char": "Mayuri",
         "message": "Let's head back, Okarin."
@@ -83177,7 +83177,7 @@
             "Does she have infravision!?"
         ],
         "char": "Kurisu",
-        "message": "So you were\u2470 looking."
+        "message": "So you were looking."
     },
     {
         "context": [
@@ -83248,7 +83248,7 @@
             "I hand over my coat as asked."
         ],
         "char": "Rintaro",
-        "message": "You're an experiment-loving girl. You're not supposed to be... domestic\u2470."
+        "message": "You're an experiment-loving girl. You're not supposed to be... domestic."
     },
     {
         "context": [],
@@ -83429,7 +83429,7 @@
         "context": [
             "Silence again.",
             "The words flow so naturally when it's just harmless banter, but one second of silence, and suddenly we have nothing to say.",
-            "It must be because of what happened yesterday. I'm so desperate to avoid the topic that nothing\u2470 seems safe.",
+            "It must be because of what happened yesterday. I'm so desperate to avoid the topic that nothing seems safe.",
             "I know I need to say something, but what?"
         ],
         "char": "Kurisu",
@@ -83464,7 +83464,7 @@
     },
     {
         "context": [
-            "Where did that\u2470 come from?",
+            "Where did that come from?",
             "Kurisu keeps staring into the darkness."
         ],
         "char": "Kurisu",
@@ -83512,7 +83512,7 @@
     {
         "context": [],
         "char": "Kurisu",
-        "message": "But there's one thing I do\u2470 know."
+        "message": "But there's one thing I do know."
     },
     {
         "context": [],
@@ -84487,7 +84487,7 @@
             "I feel bad for Kurisu, but it needs to be said."
         ],
         "char": "Rintaro",
-        "message": "This is the way it has to be. I chose you, Mayuri. You have an obligation\u2470 to live."
+        "message": "This is the way it has to be. I chose you, Mayuri. You have an obligation to live."
     },
     {
         "context": [
@@ -84746,7 +84746,7 @@
     {
         "context": [],
         "char": "Rintaro",
-        "message": "This is about me. Because I\u2470 want to save you, because I\u2470 can't bear to lose you!"
+        "message": "This is about me. Because I want to save you, because I can't bear to lose you!"
     },
     {
         "context": [],
@@ -85395,7 +85395,7 @@
     {
         "context": [],
         "char": "Mayuri",
-        "message": "And whenever I think about that important friend, my heart hurts, like hnng\u2470, you know?"
+        "message": "And whenever I think about that important friend, my heart hurts, like hnng, you know?"
     },
     {
         "context": [],
@@ -85479,7 +85479,7 @@
             "But her fists are trembling. Her body exudes raw fury."
         ],
         "char": "Kurisu",
-        "message": "This is ridiculous! You... motherfucker\u2470!"
+        "message": "This is ridiculous! You... motherfucker!"
     },
     {
         "context": [],
@@ -85654,7 +85654,7 @@
             "Yet I never do.",
             "Why?",
             "Because I know that even if I do, nothing will change.",
-            "I don't believe\u2470 that anything will change.",
+            "I don't believe that anything will change.",
             "Every time Mayuri dies, I find myself thinking, \"Another failure. What went wrong this time?\"",
             "I calmly analyze Mayuri's death, then take my data and head for the Time Leap Machine with a sigh, like a gamer forced for the umpteenth time to restart a particularly difficult stage.",
             "I'm just going through the motions. I didn't even realize, until this moment, how routine it had all become.",
@@ -86000,7 +86000,7 @@
         "context": [
             "Did I make her mad?",
             "Perhaps Kurisu hates me for some reason.",
-            "Maybe she really did\u2470 mean all those insults she's said to me.",
+            "Maybe she really did mean all those insults she's said to me.",
             "That would be really sad...",
             "I slowly lick my trembling lips, and timidly try to ask a question."
         ],
@@ -86925,7 +86925,7 @@
         "context": [
             "Mayuri and Daru are just as surprised.",
             "What is that thing?",
-            "I mean, it looks\u2470 like Suzuha's time machine.",
+            "I mean, it looks like Suzuha's time machine.",
             "But there's something different about it.",
             "Suzuha's looked old and beat up. This one looks brand new.",
             "It's not stuck in the wall, either.",
@@ -86997,7 +86997,7 @@
             "This doesn't make sense!",
             "No, calm down. Figure this out, Okabe.",
             "You know that this is impossible.",
-            "Suzuha can't\u2470 be here.",
+            "Suzuha can't be here.",
             "She leapt to 1975 in her one-way time machine. She found the IBN 5100, made sure it would get to you, then passed away in the year 2000.",
             "So where did this girl come from?"
         ],
@@ -87126,7 +87126,7 @@
     {
         "context": [
             "This isn't the Suzuha I know.",
-            "But it is\u2470 Suzuha."
+            "But it is Suzuha."
         ],
         "char": "Rintaro",
         "message": "You're... from a different future?"
@@ -87386,7 +87386,7 @@
             "No D-Mails. No time leaps.",
             "Genuine physical time travel!",
             "I can't refuse.",
-            "I literally\u2470 can't refuse.",
+            "I literally can't refuse.",
             "I saw this time machine once before. On July 28th, that fateful day.",
             "Shortly before Kurisu was killed, I saw it standing in this very spot, as sure as it is standing before me now.",
             "There's only one thing that can mean.",
@@ -87602,7 +87602,7 @@
     },
     {
         "context": [
-            "Kurisu can't be saved. I know\u2470 that. Even if we change the past, convergence will ensure her death, just as it did for Mayuri.",
+            "Kurisu can't be saved. I know that. Even if we change the past, convergence will ensure her death, just as it did for Mayuri.",
             "It's impossible. There's no way this plan can succeed.",
             "In the end, fate will win, as it always has."
         ],
@@ -87625,7 +87625,7 @@
     {
         "context": [
             "Kurisu...",
-            "How I have dreamt of saving her. I would do anything -- anything\u2470 -- to change her fate.",
+            "How I have dreamt of saving her. I would do anything -- anything -- to change her fate.",
             "But how do I know this invitation won't lead me into another maze of despair?"
         ],
         "char": "Mayuri",
@@ -87851,7 +87851,7 @@
     },
     {
         "context": [
-            "The past has changed -- changed back\u2470, I suppose, from my point of view.",
+            "The past has changed -- changed back, I suppose, from my point of view.",
             "When I was on the Alpha worldline, I saw Titor post on @channel in real time. On this worldline, those posts were made to an English BBS in the year 2000."
         ],
         "char": "Suzuha",
@@ -88484,7 +88484,7 @@
             "That much was obvious from her lecture at ATF.",
             "In that case, it's obvious why she's here.",
             "She didn't come to see his presentation.",
-            "She came to see him\u2470.",
+            "She came to see him.",
             "But why?",
             "What could be the connection?",
             "...Wait.",
@@ -88501,7 +88501,7 @@
     {
         "context": [
             "Papa...",
-            "He's her father\u2470... her estranged father, who she told me she hadn't seen in seven years.",
+            "He's her father... her estranged father, who she told me she hadn't seen in seven years.",
             "Kurisu did say that her father was a physicist.",
             "And Nakabachi certainly is a physicist, though the scientific community at large has rejected his research.",
             "But wait... does this mean that Nakabachi killed his own daughter?",
@@ -88706,7 +88706,7 @@
     {
         "context": [],
         "char": "Nakabachi",
-        "message": "You want my opinion\u2470!? We'll submit it jointly\u2470!? You don't mean any of that! I know how you think!"
+        "message": "You want my opinion!? We'll submit it jointly!? You don't mean any of that! I know how you think!"
     },
     {
         "context": [
@@ -88752,7 +88752,7 @@
     {
         "context": [],
         "char": "Nakabachi",
-        "message": "You want my opinion\u2470 on this thesis? Fine, I'll give it to you."
+        "message": "You want my opinion on this thesis? Fine, I'll give it to you."
     },
     {
         "context": [
@@ -89060,7 +89060,7 @@
             "Laughing maniacally, Nakabachi picks up the dropped thesis and runs to the elevator at the far end of the hall.",
             "I can't chase him.",
             "I know what's going to happen if I don't stop him, but I can't take a single step.",
-            "Is this the joke? Is this\u2470 the punchline?",
+            "Is this the joke? Is this the punchline?",
             "I wanted to know who killed Kurisu.",
             "And now..."
         ],
@@ -89508,7 +89508,7 @@
             "But I realize that this is retribution, my just punishment for taking the godlike power of time travel and using it to distort the past.",
             "Kurisu can't be saved.",
             "That has been proven beyond a doubt.",
-            "At the very least, I\u2470 can't save her.",
+            "At the very least, I can't save her.",
             "Not even with Mayuri's encouragement."
         ],
         "char": "Rintaro",
@@ -89550,7 +89550,7 @@
         "context": [
             "No... Is this...",
             "It doesn't even occur to me to wonder if my phone has malfunctioned.",
-            "After all, I know\u2470 this phenomenon."
+            "After all, I know this phenomenon."
         ],
         "char": "Rintaro",
         "message": "A D-Mail!?"
@@ -89702,7 +89702,7 @@
             "Nakabachi thrusts his open hand at the camera."
         ],
         "char": "Nakabachi",
-        "message": "Behold the vessel of God's grace! Because this\u2470 was inside the envelope, it set off the metal detector."
+        "message": "Behold the vessel of God's grace! Because this was inside the envelope, it set off the metal detector."
     },
     {
         "context": [],
@@ -89726,7 +89726,7 @@
             "Mayuri points at the screen.",
             "I look closer.",
             "That lump of metal in Nakabachi's hand.",
-            "It's not just any\u2470 lump of metal."
+            "It's not just any lump of metal."
         ],
         "char": "Mayuri",
         "message": "That's my Metal Upa! Look! See there? It has Mayushii's name on it!"
@@ -90020,7 +90020,7 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "It was necessary. Necessary to give me the proper motivation\u2470."
+        "message": "It was necessary. Necessary to give me the proper motivation."
     },
     {
         "context": [],
@@ -90030,7 +90030,7 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "Your guilt, your self-loathing, have driven me for fifteen years. They gave me the focus\u2470 I needed to complete my plan."
+        "message": "Your guilt, your self-loathing, have driven me for fifteen years. They gave me the focus I needed to complete my plan."
     },
     {
         "context": [],
@@ -90165,7 +90165,7 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "You're going to deceive yourself\u2470."
+        "message": "You're going to deceive yourself."
     },
     {
         "context": [],
@@ -90200,7 +90200,7 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "It was only three weeks, but she was there\u2470, beside you."
+        "message": "It was only three weeks, but she was there, beside you."
     },
     {
         "context": [],
@@ -90295,12 +90295,12 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "Those three weeks made you who you are, a man who would do anything\u2470 to save the woman he loves. "
+        "message": "Those three weeks made you who you are, a man who would do anything to save the woman he loves. "
     },
     {
         "context": [],
         "char": "Okabe",
-        "message": "Your desperation made me who I am, a man who has given everything\u2470 to make that dream come true."
+        "message": "Your desperation made me who I am, a man who has given everything to make that dream come true."
     },
     {
         "context": [],
@@ -90315,7 +90315,7 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "It all\u2470 meant something."
+        "message": "It all meant something."
     },
     {
         "context": [],
@@ -90340,7 +90340,7 @@
     {
         "context": [],
         "char": "Okabe",
-        "message": "But at the same time, only\u2470 that has been established."
+        "message": "But at the same time, only that has been established."
     },
     {
         "context": [],
@@ -90402,7 +90402,7 @@
             "El Psy Kongroo?"
         ],
         "char": "Rintaro",
-        "message": "I'm thirty-three years old and I still\u2470 have no shame?"
+        "message": "I'm thirty-three years old and I still have no shame?"
     },
     {
         "context": [],
@@ -90417,7 +90417,7 @@
     {
         "context": [
             "It's pathetic. Laughable. A juvenile fantasy.",
-            "But at the same time... it feels right\u2470."
+            "But at the same time... it feels right."
         ],
         "char": "Rintaro",
         "message": "Very well! If this is the choice of Steins Gate, then so be it!"
@@ -90827,7 +90827,7 @@
             "This is the third time I've been here now.",
             "I run through the plan in my head one last time.",
             "Time is short, but I have no choice. I have to do it.",
-            "No. I will\u2470 do it. Failure isn't an option.",
+            "No. I will do it. Failure isn't an option.",
             "I wait for Suzuha to break the lock, then I run inside just like last time.",
             "Narrowly avoiding the first me again, I descend to the seventh floor.",
             "Last time, I went all the way down to the fourth floor. But not this time.",
@@ -91114,7 +91114,7 @@
     {
         "context": [],
         "char": "Nakabachi",
-        "message": "You want my opinion\u2470!? We'll submit it jointly\u2470!? You don't mean any of that! I know how you think!"
+        "message": "You want my opinion!? We'll submit it jointly!? You don't mean any of that! I know how you think!"
     },
     {
         "context": [
@@ -91140,7 +91140,7 @@
             "Events are proceeding just like last time, barreling inexorably towards disaster.",
             "Please, I find myself begging. Make time stop.",
             "But another voice from within answers.",
-            "Are you praying\u2470, Hououin Kyouma?",
+            "Are you praying, Hououin Kyouma?",
             "Have you forgotten?"
         ],
         "char": "Nakabachi",
@@ -92122,7 +92122,7 @@
     {
         "context": [],
         "char": "Faris",
-        "message": "Now is the time to summon all the powers of moe to this holy land in preparation for their\u2470 offensive, nya. "
+        "message": "Now is the time to summon all the powers of moe to this holy land in preparation for their offensive, nya. "
     },
     {
         "context": [],

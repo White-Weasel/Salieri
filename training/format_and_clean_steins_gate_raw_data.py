@@ -3,7 +3,7 @@ import json
 f = open(r"./raw_data/steins_gate_raw_text.txt", 'r')
 raw_text = f.read()
 f.close()
-len(raw_text)
+raw_text = raw_text.replace(r"⑰", '')
 all_lines = raw_text.split('\n')
 all_conver = []
 context = []
